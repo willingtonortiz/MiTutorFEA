@@ -1,0 +1,169 @@
+.container {
+	.navbar {
+		// border: 1px solid red;
+		padding: 16px;
+		display: flex;
+		flex-flow: row nowrap;
+
+		justify-content: space-around;
+		align-items: center;
+
+		.search {
+			input {
+				padding: 8px;
+				border: 1px solid lightgray;
+				border-radius: 5px;
+				font-size: 16px;
+			}
+		}
+	}
+
+	.side-bar {
+		display: none;
+	}
+
+	.found-tutorings {
+		margin: 32px 0;
+
+		display: flex;
+		flex-flow: column wrap;
+		align-content: center;
+
+		.title {
+			margin-bottom: 16px;
+
+			h1 {
+				font-size: 20px;
+			}
+		}
+
+		.body {
+			display: flex;
+			flex-flow: column wrap;
+			align-content: center;
+
+			.tutoring {
+				width: 300px;
+				margin: 16px 0;
+				padding: 16px 20px;
+				box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+				border-radius: 5px;
+				cursor: pointer;
+
+				.tutoring-body {
+					margin-bottom: 16px;
+
+					display: flex;
+					flex-flow: row nowrap;
+					justify-content: flex-start;
+					align-items: center;
+
+					.image {
+						height: 60px;
+						width: 60px;
+						margin-right: 20px;
+						font-size: 30px;
+						border-radius: 5px;
+						background-color: tomato;
+						color: white;
+
+						display: flex;
+						justify-content: center;
+						align-items: center;
+					}
+
+					.course-tutor {
+						display: flex;
+						flex-flow: column nowrap;
+
+						h1 {
+							font-weight: bold;
+							font-size: 18px;
+							margin-bottom: 4px;
+						}
+					}
+				}
+
+				.tutoring-footer {
+					display: flex;
+					justify-content: space-between;
+
+					.end-date,
+					.schedule {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	// .container {
+	// 	// background-color: red;
+	// 	.found-tutorings {
+	// 		.body {
+	// 			// flex-flow: row wrap;
+	// 			// justify-content: space-around;
+
+	// 			.tutoring {
+	// 				.tutoring-body {
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+}
+
+@media only screen and (min-width: 1024px) {
+	.container {
+		height: 100vh;
+		display: grid;
+		grid-template-columns: 3fr 9fr;
+		grid-template-rows: min-content;
+		gap: 16px;
+		align-items: flex-start;
+
+		.navbar {
+			grid-column: 1 / span 2;
+		}
+
+		.side-bar {
+			grid-column: 1 / span 1;
+			align-self: stretch;
+
+			margin: 16px;
+			box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			button {
+				padding: 12px 20px;
+				background-color: #4e83ed;
+				color: white;
+				border-radius: 5px;
+				border: none;
+				font-size: 18px;
+				font-weight: normal;
+				cursor: pointer;
+			}
+		}
+
+		.found-tutorings {
+			grid-column: 2 / span 1;
+			align-self: stretch;
+
+			display: block;
+			padding: 16px;
+
+			.body {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				align-content: unset;
+				justify-items: center;
+			}
+		}
+	}
+}

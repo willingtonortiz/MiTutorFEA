@@ -1,0 +1,110 @@
+<div class="container">
+	<nav class="navbar">
+		<div class="logo">
+			log
+		</div>
+		<div class="search">
+			<input
+				type="text"
+				placeholder="Busca algún curso"
+				[(ngModel)]="courseName"
+				(keyup.enter)="onEnter()"
+			/>
+		</div>
+		<div class="avatar">
+			photo
+		</div>
+	</nav>
+
+	<div class="side-bar">
+		<button>Quiero ser tutor</button>
+	</div>
+
+	<div
+		*ngIf="isSearching && !tutoringsNotFound && !courseNotFound"
+		class="found-tutorings"
+	>
+		<div class="title">
+			<h1>Tutorías encontradas</h1>
+		</div>
+
+		<div class="body">
+			<div *ngFor="let item of tutoringOffers" class="tutoring">
+				<div class="tutoring-body">
+					<div class="image">
+						<p>{{ item.course.name | titlecase | slice: 0:1 }}</p>
+					</div>
+
+					<div class="course-tutor">
+						<h1>{{ item.course.name | titlecase }}</h1>
+						<p>
+							{{ item.person.name + " " + item.person.lastname }}
+						</p>
+					</div>
+				</div>
+
+				<div class="tutoring-footer">
+					<div class="end-date">
+						<p>
+							{{
+								item.tutoringOffer.endTime | date: "dd/MM/yyyy"
+							}}
+						</p>
+					</div>
+
+					<div class="schedule">
+						<p>
+							{{
+								item.tutoringOffer.startTime | date: "shortTime"
+							}}
+							-
+							{{ item.tutoringOffer.endTime | date: "shortTime" }}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div *ngFor="let item of tutoringOffers" class="tutoring">
+				<div class="tutoring-body">
+					<div class="image">
+						<p>{{ item.course.name | slice: 0:1 }}</p>
+					</div>
+
+					<div class="course-tutor">
+						<h1>{{ item.course.name }}</h1>
+						<p>
+							{{ item.person.name + " " + item.person.lastname }}
+						</p>
+					</div>
+				</div>
+
+				<div class="tutoring-footer">
+					<div class="end-date">
+						<p>
+							{{
+								item.tutoringOffer.endTime | date: "dd/MM/yyyy"
+							}}
+						</p>
+					</div>
+
+					<div class="schedule">
+						<p>
+							{{
+								item.tutoringOffer.startTime | date: "shortTime"
+							}}
+							-
+							{{ item.tutoringOffer.endTime | date: "shortTime" }}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div *ngIf="tutoringsNotFound" class="errorMessage">
+		<p>No se encontraron tutorías</p>
+	</div>
+
+	<div *ngIf="courseNotFound" class="errorMessage">
+		<p>No se encontró un curso con ese nombre</p>
+	</div>
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TutoringOfferService, CourseService } from "src/app/core";
 import { Course } from "src/app/shared/models";
-import { HttpErrorResponse } from "@angular/common/http";
+import { TutoringOfferInfo } from "src/app/shared/dtos";
 
 @Component({
 	selector: "app-home-page",
@@ -9,11 +9,8 @@ import { HttpErrorResponse } from "@angular/common/http";
 	styleUrls: ["./home-page.component.scss"]
 })
 export class HomePageComponent implements OnInit {
-	public tutoringOffers: any[];
+	public tutoringOffers: Array<TutoringOfferInfo>;
 	public courseName: string = "";
-	public isSearching: boolean = false;
-	public courseNotFound: boolean = false;
-	public tutoringsNotFound: boolean = false;
 
 	constructor(
 		private tutoringOfferService: TutoringOfferService,
@@ -21,46 +18,35 @@ export class HomePageComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		// Se debe quitar esto
+
 		this.courseName = "calculo 2";
 		this.onEnter();
 	}
 
-	public onEnter() {
+	public async onEnter() {
 		if (this.courseName.length === 0) {
-			this.isSearching = false;
 			return;
 		}
-		// console.log(this.courseName.toLowerCase())
 
-		const courseSuscription = this.courseService
-			.findByName(10, this.courseName.toLowerCase())
-			.subscribe({
-				next: (course: Course) => {
-					courseSuscription.unsubscribe();
-					this.courseNotFound = false;
+		try {
+			// Finding course
+			const course: Course = await this.courseService.findByUniversityIdAndCourseName(
+				10,
+				this.courseName.toLowerCase()
+			);
 
-					const tutoringOfferSuscription = this.tutoringOfferService
-						.findByUniversityAndCourse(10, course.courseId)
-						.subscribe({
-							next: (data: any[]) => {
-								this.tutoringOffers = data;
-								this.isSearching = true;
-								this.tutoringsNotFound = false;
-								tutoringOfferSuscription.unsubscribe();
-							},
-							error: (error: HttpErrorResponse) => {
-								if (error.status === 404) {
-									this.tutoringsNotFound = true;
-								}
-							}
-						});
-				},
-				error: (error: HttpErrorResponse) => {
-					if (error.status === 404) {
-						this.courseNotFound = true;
-					}
-				}
-			});
-		// .unsubscribe();
+			// Finding tutoring offers
+			const tutoringOffers: Array<
+				TutoringOfferInfo
+			> = await this.tutoringOfferService.findByUniversityIdAndCourseId(
+				10,
+				course.courseId
+			);
+
+			this.tutoringOffers = tutoringOffers;
+		} catch (error) {
+			this.tutoringOffers = [];
+		}
 	}
 }

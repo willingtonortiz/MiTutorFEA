@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { TutoringOffer, Person, Course } from "src/app/shared/models";
 import { Observable } from "rxjs";
+import { TutoringOfferInfo } from "src/app/shared/dtos";
 
 interface TutoringOfferWithPersonAndCourse {
 	tutoringOffer: TutoringOffer;
@@ -16,12 +17,14 @@ interface TutoringOfferWithPersonAndCourse {
 export class TutoringOfferService {
 	public constructor(private httpClient: HttpClient) {}
 
-	public findByUniversityAndCourse(
+	public findByUniversityIdAndCourseId(
 		universityId: number,
 		courseId: number
-	): Observable<TutoringOfferWithPersonAndCourse[]> {
-		return this.httpClient.get<TutoringOfferWithPersonAndCourse[]>(
-			`${environment.apiUrl}/universities/${universityId}/courses/${courseId}/tutoringoffers`
-		);
+	): Promise<Array<TutoringOfferInfo>> {
+		return this.httpClient
+			.get<Array<TutoringOfferInfo>>(
+				`${environment.apiUrl}/universities/${universityId}/courses/${courseId}/tutoringoffers`
+			)
+			.toPromise<Array<TutoringOfferInfo>>();
 	}
 }

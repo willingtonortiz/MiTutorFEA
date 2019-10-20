@@ -21,98 +21,9 @@
 	.side-bar {
 		display: none;
 	}
-
-	.found-tutorings {
-		margin: 32px 0;
-
-		display: flex;
-		flex-flow: column wrap;
-		align-content: center;
-
-		.title {
-			margin-bottom: 16px;
-
-			h1 {
-				font-size: 20px;
-			}
-		}
-
-		.body {
-			display: flex;
-			flex-flow: column wrap;
-			align-content: center;
-
-			.tutoring {
-				width: 300px;
-				margin: 16px 0;
-				padding: 16px 20px;
-				box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
-				border-radius: 5px;
-				cursor: pointer;
-
-				.tutoring-body {
-					margin-bottom: 16px;
-
-					display: flex;
-					flex-flow: row nowrap;
-					justify-content: flex-start;
-					align-items: center;
-
-					.image {
-						height: 60px;
-						width: 60px;
-						margin-right: 20px;
-						font-size: 30px;
-						border-radius: 5px;
-						background-color: tomato;
-						color: white;
-
-						display: flex;
-						justify-content: center;
-						align-items: center;
-					}
-
-					.course-tutor {
-						display: flex;
-						flex-flow: column nowrap;
-
-						h1 {
-							font-weight: bold;
-							font-size: 18px;
-							margin-bottom: 4px;
-						}
-					}
-				}
-
-				.tutoring-footer {
-					display: flex;
-					justify-content: space-between;
-
-					.end-date,
-					.schedule {
-						font-size: 14px;
-					}
-				}
-			}
-		}
-	}
 }
 
 @media only screen and (min-width: 768px) {
-	// .container {
-	// 	// background-color: red;
-	// 	.found-tutorings {
-	// 		.body {
-	// 			// flex-flow: row wrap;
-	// 			// justify-content: space-around;
-
-	// 			.tutoring {
-	// 				.tutoring-body {
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -148,21 +59,6 @@
 				font-size: 18px;
 				font-weight: normal;
 				cursor: pointer;
-			}
-		}
-
-		.found-tutorings {
-			grid-column: 2 / span 1;
-			align-self: stretch;
-
-			display: block;
-			padding: 16px;
-
-			.body {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-				align-content: unset;
-				justify-items: center;
 			}
 		}
 	}

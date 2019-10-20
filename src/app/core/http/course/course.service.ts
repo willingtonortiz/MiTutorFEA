@@ -10,12 +10,14 @@ import { Observable } from "rxjs";
 export class CourseService {
 	constructor(private httpClient: HttpClient) {}
 
-	public findByName(
+	public findByUniversityIdAndCourseName(
 		universityId: number,
 		courseName: string
-	): Observable<Course> {
-		return this.httpClient.get<Course>(
-			`${environment.apiUrl}/universities/${universityId}/courses/${courseName}`
-		);
+	): Promise<Course> {
+		return this.httpClient
+			.get<Course>(
+				`${environment.apiUrl}/universities/${universityId}/courses?courseName=${courseName}`
+			)
+			.toPromise<Course>();
 	}
 }

@@ -1,0 +1,38 @@
+.container {
+	margin: 32px 0;
+
+	display: flex;
+	flex-flow: column wrap;
+	align-content: center;
+
+	.title {
+		margin-bottom: 16px;
+
+		h1 {
+			font-size: 20px;
+		}
+	}
+
+	.body {
+		display: flex;
+		flex-flow: column wrap;
+		align-content: center;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.container {
+		grid-column: 2 / span 1;
+		align-self: stretch;
+
+		display: block;
+		padding: 16px;
+
+		.body {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			align-content: unset;
+			justify-items: center;
+		}
+	}
+}

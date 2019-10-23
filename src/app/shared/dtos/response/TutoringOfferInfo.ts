@@ -1,7 +1,7 @@
 export interface TutoringOfferInfo {
 	tutoringOfferId?: number;
-	courseName?: string;
-	tutorName?: string;
+	course?: string;
+	tutor?: string;
 	startTime?: Date;
 	endTime?: Date;
 }

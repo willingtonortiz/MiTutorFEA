@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Course } from "src/app/shared/models";
 import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
 	providedIn: "root"
@@ -15,8 +15,18 @@ export class CourseService {
 		courseName: string
 	): Promise<Course> {
 		return this.httpClient
-			.get<Course>(
-				`${environment.apiUrl}/universities/${universityId}/courses?courseName=${courseName}`
+			.get<Array<Course>>(
+				`${environment.apiUrl}/universities/${universityId}/courses`,
+				{
+					params: {
+						courseName
+					}
+				}
+			)
+			.pipe(
+				map((courses: Array<Course>) => {
+					return courses[0];
+				})
 			)
 			.toPromise<Course>();
 	}

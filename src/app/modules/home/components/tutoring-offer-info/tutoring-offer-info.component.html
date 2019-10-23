@@ -1,13 +1,13 @@
 <div class="container">
 	<div class="tutoring-body">
 		<div class="image">
-			<p>{{ tutoringOffer.courseName | titlecase | slice: 0:1 }}</p>
+			<p>{{ tutoringOffer.course | titlecase | slice: 0:1 }}</p>
 		</div>
 
 		<div class="course-tutor">
-			<h1>{{ tutoringOffer.courseName | titlecase }}</h1>
+			<h1>{{ tutoringOffer.course | titlecase }}</h1>
 			<p>
-				{{ tutoringOffer.tutorName }}
+				{{ tutoringOffer.tutor }}
 			</p>
 		</div>
 	</div>

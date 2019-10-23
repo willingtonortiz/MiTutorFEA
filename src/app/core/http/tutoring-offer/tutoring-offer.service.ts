@@ -5,12 +5,6 @@ import { TutoringOffer, Person, Course } from "src/app/shared/models";
 import { Observable } from "rxjs";
 import { TutoringOfferInfo } from "src/app/shared/dtos";
 
-interface TutoringOfferWithPersonAndCourse {
-	tutoringOffer: TutoringOffer;
-	person: Person;
-	course: Course;
-}
-
 @Injectable({
 	providedIn: "root"
 })

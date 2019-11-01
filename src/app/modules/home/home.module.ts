@@ -2,7 +2,11 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { HomeRoutingModule } from "./home-routing.module";
-import { TutoringOfferService, CourseService } from "src/app/core";
+import {
+	TutoringOfferService,
+	CourseService,
+	TutorService
+} from "src/app/core";
 
 // Pages
 import { HomePageComponent } from "./pages";
@@ -15,6 +19,7 @@ import {
 	TutoringOfferInfoComponent,
 	TutoringOfferInfoGroupComponent
 } from "./components";
+import { SearchTutoringOffersAnsTutorsService } from "./services";
 
 @NgModule({
 	imports: [CommonModule, HomeRoutingModule, HttpClientModule, FormsModule],
@@ -25,6 +30,11 @@ import {
 		TutoringOfferInfoComponent,
 		TutoringOfferInfoGroupComponent
 	],
-	providers: [TutoringOfferService, CourseService]
+	providers: [
+		TutoringOfferService,
+		CourseService,
+		TutorService,
+		SearchTutoringOffersAnsTutorsService
+	]
 })
 export class HomeModule {}

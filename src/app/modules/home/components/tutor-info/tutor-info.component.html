@@ -1,1 +1,21 @@
-<p>tutor-info works!</p>
+<div class="container">
+	<div class="photo-container">
+		<div class="photo"></div>
+	</div>
+
+	<div class="data">
+		<div class="personal">
+			<div class="row">
+				<p>{{ tutor.fullName }}</p>
+			</div>
+			<div class="row">
+				<p>{{ tutor.career }}</p>
+			</div>
+		</div>
+
+		<div class="points">
+			<p class="high">{{ tutor.points | number: "1.1" }}</p>
+			<p class="small">Puntuación</p>
+		</div>
+	</div>
+</div>

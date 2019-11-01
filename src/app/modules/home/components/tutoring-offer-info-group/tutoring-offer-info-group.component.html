@@ -1,5 +1,5 @@
 <div class="container">
-	<div *ngIf="tutoringOffers.length > 0; else notFound">
+	<div class="found" *ngIf="tutoringOffers.length > 0; else notFound">
 		<div class="title">
 			<h1>Tutorías encontradas</h1>
 		</div>
@@ -12,11 +12,9 @@
 		</div>
 	</div>
 
-	<!-- <ng-template #notFound> -->
 	<ng-template #notFound>
 		<div class="errorMessage">
 			<p>No se encontraron tutorías</p>
 		</div>
 	</ng-template>
-	<!-- </ng-template> -->
 </div>

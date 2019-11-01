@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { TutoringOffer, Person, Course } from "src/app/shared/models";
 import { Observable } from "rxjs";
-import { TutoringOfferInfo } from "src/app/shared/dtos";
+import { TutoringOfferInfo } from "src/app/shared/dtos/Input";
 
 @Injectable({
 	providedIn: "root"

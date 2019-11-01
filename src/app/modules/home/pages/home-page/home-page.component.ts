@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { TutoringOfferService, CourseService } from "src/app/core";
 import { Course } from "src/app/shared/models";
-import { TutoringOfferInfo } from "src/app/shared/dtos";
+import { TutoringOfferInfo, TutorInfo } from "src/app/shared/dtos/Input";
+import { SearchTutoringOffersAnsTutorsService } from "../../services";
 
 @Component({
 	selector: "app-home-page",
@@ -9,18 +10,15 @@ import { TutoringOfferInfo } from "src/app/shared/dtos";
 	styleUrls: ["./home-page.component.scss"]
 })
 export class HomePageComponent implements OnInit {
-	public tutoringOffers: Array<TutoringOfferInfo>;
 	public courseName: string = "";
 
 	constructor(
-		private tutoringOfferService: TutoringOfferService,
-		private courseService: CourseService
+		private _searchTutoringOffersAnsTutorsService: SearchTutoringOffersAnsTutorsService
 	) {}
 
 	ngOnInit() {
 		// Se debe quitar esto
-
-		// this.courseName = "calculo 2";
+		this.courseName = "calculo 2";
 		this.onEnter();
 	}
 
@@ -29,24 +27,12 @@ export class HomePageComponent implements OnInit {
 			return;
 		}
 
-		try {
-			// Finding course
-			const course: Course = await this.courseService.findByUniversityIdAndCourseName(
-				10,
-				this.courseName.toLowerCase()
-			);
+		this._searchTutoringOffersAnsTutorsService.findTutorigOffersByCourseName(
+			this.courseName
+		);
 
-			// Finding tutoring offers
-			const tutoringOffers: Array<
-				TutoringOfferInfo
-			> = await this.tutoringOfferService.findByUniversityIdAndCourseId(
-				10,
-				course.courseId
-			);
-
-			this.tutoringOffers = tutoringOffers;
-		} catch (error) {
-			this.tutoringOffers = [];
-		}
+		this._searchTutoringOffersAnsTutorsService.findTutorsByCourseName(
+			this.courseName
+		);
 	}
 }

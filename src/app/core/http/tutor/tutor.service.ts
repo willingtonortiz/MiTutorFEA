@@ -1,9 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { TutorInfo } from "src/app/shared/dtos/Input";
+import { environment } from "src/environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: "root"
 })
 export class TutorService {
+	constructor(private httpClient: HttpClient) {}
 
-  constructor() { }
+	public findByUniversityIdAndCourseId(
+		universityId: number,
+		courseId: number
+	): Promise<Array<TutorInfo>> {
+		return this.httpClient
+			.get<Array<TutorInfo>>(
+				`${environment.apiUrl}/universities/${universityId}/courses/${courseId}/tutors`
+			)
+			.toPromise<Array<TutorInfo>>();
+	}
 }

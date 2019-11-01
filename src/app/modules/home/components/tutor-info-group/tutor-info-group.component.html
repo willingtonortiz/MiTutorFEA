@@ -1,1 +1,20 @@
-<p>tutor-info-group works!</p>
+<div class="container">
+	<div class="found" *ngIf="tutors.length > 0; else notFound">
+		<div class="title">
+			<h1>Tutores encontrados</h1>
+		</div>
+
+		<div class="body">
+			<app-tutor-info
+				*ngFor="let tutor of tutors"
+				[tutor]="tutor"
+			></app-tutor-info>
+		</div>
+	</div>
+
+	<ng-template #notFound>
+		<div class="errorMessage">
+			<p>No se encontraron tutores</p>
+		</div>
+	</ng-template>
+</div>

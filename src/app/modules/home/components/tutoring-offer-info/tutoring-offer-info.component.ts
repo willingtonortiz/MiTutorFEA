@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { TutoringOfferInfo } from "src/app/shared/dtos";
+import { TutoringOfferInfo } from "src/app/shared/dtos/Input";
 
 @Component({
 	selector: "app-tutoring-offer-info",

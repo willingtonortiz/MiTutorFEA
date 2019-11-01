@@ -1,6 +1,5 @@
 .container {
 	.navbar {
-		// border: 1px solid red;
 		padding: 16px;
 		display: flex;
 		flex-flow: row nowrap;
@@ -20,6 +19,9 @@
 
 	.side-bar {
 		display: none;
+	}
+
+	.results {
 	}
 }
 
@@ -60,6 +62,13 @@
 				font-weight: normal;
 				cursor: pointer;
 			}
+		}
+
+		.results {
+			grid-column: 2 / span 1;
+			align-self: stretch;
+			display: flex;
+			flex-flow: column wrap;
 		}
 	}
 }

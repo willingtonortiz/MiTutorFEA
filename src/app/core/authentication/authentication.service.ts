@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { map } from "rxjs/operators";
 import { User } from "src/app/shared/models";
+import { UserRegister } from 'src/app/shared/dtos/Input/UserRegister';
 
 @Injectable({
 	providedIn: "root"
@@ -53,22 +54,17 @@ export class AuthenticationService {
 	public logout() {
 		localStorage.removeItem("currentUser");
 		this.currentUserSubject.next(null);
+
 	}
 
-	public register(user: User) {
-		return this.httpClient
-			.post<any>(`${environment.apiUrl}/RUTA_LOGIN`, user)
-			.pipe(
-				map((user: User) => {
-					if (user && user.token) {
-						localStorage.setItem(
-							"currentUser",
-							JSON.stringify(user)
-						);
-					}
+	public register(user: UserRegister) {
+		const uri =`${environment.apiUrl}/register`	;
+		const httpOptions = {
+			headers: new HttpHeaders({
+				"Content-Type": "application/json"
+			})
+		};
 
-					return user;
-				})
-			);
+		return this.httpClient.post(uri, user, httpOptions).toPromise<any>();
 	}
 }

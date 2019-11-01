@@ -122,7 +122,8 @@
               "devServerTarget": "MiTutorFEA:serve:production"
             }
           }
-        }
+		}
+
       }
     }},
   "defaultProject": "MiTutorFEA"

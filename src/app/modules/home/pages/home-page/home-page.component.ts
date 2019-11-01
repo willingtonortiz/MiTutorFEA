@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
 
 	ngOnInit() {
 		// Se debe quitar esto
-		this.courseName = "calculo 2";
+		//this.courseName = "calculo 2";
 		this.onEnter();
 	}
 

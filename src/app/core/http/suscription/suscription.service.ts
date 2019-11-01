@@ -17,7 +17,6 @@ export class SuscriptionService {
 		};
 
 		const url = `${environment.apiUrl}/users/subscription`;
-		console.log(membershipDTO);
 
 
 		return this.httpClient.post(url, membershipDTO, httpOptions).toPromise<any>();

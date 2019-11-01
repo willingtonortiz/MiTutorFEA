@@ -21,7 +21,7 @@ export class SubscriptionComponent implements OnInit {
 	public async Subscription():Promise<any>{
 
 		let newMembership:MembershipDTO = {
-			userId:5,
+			userId:4,
 			creditCard:this.creditCard,
 			ccv:this.ccv,
 			expirationDate:this.expirationDate

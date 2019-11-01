@@ -1,0 +1,12 @@
+.container {
+	display: flex;
+	flex-flow: column nowrap;
+	height: 230px;
+	overflow-y: scroll;
+
+	app-course-item {
+		border: 1px solid lightgray;
+		margin: 8px 0px;
+		border-radius: 5px;
+	}
+}

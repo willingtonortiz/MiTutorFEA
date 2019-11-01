@@ -19,6 +19,8 @@ import {
 	TutoringOfferInfoComponent,
 	TutoringOfferInfoGroupComponent
 } from "./components";
+
+// services
 import { SearchTutoringOffersAnsTutorsService } from "./services";
 
 @NgModule({

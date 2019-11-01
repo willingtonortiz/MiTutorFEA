@@ -20,16 +20,17 @@ export class ErrorInterceptor implements HttpInterceptor {
 		request: HttpRequest<any>,
 		next: HttpHandler
 	): Observable<HttpEvent<any>> {
-		return next.handle(request).pipe(
-			catchError((error: HttpErrorResponse) => {
-				if ([401, 403].indexOf(error.status) !== -1) {
-					this.authenticationService.logout();
-					location.reload(true);
-				}
+		return next.handle(request);
+		// .pipe(
+		// 	catchError((error: HttpErrorResponse) => {
+		// 		if ([401, 403].indexOf(error.status) !== -1) {
+		// 			this.authenticationService.logout();
+		// 			location.reload(true);
+		// 		}
 
-				const errorMessage = error.error.message || error.statusText;
-				return throwError(errorMessage);
-			})
-		);
+		// 		const errorMessage = error.error.message || error.statusText;
+		// 		return throwError(errorMessage);
+		// 	})
+		// );
 	}
 }

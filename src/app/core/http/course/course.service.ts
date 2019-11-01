@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { map } from "rxjs/operators";
 import { Course } from "src/app/shared/models";
 import { environment } from "src/environments/environment";
-import { map } from "rxjs/operators";
 
 @Injectable({
 	providedIn: "root"
@@ -29,5 +29,25 @@ export class CourseService {
 				})
 			)
 			.toPromise<Course>();
+	}
+
+	public findAllByTutorId(tutorId: number): Promise<Array<Course>> {
+		return this.httpClient
+			.get<Array<Course>>(
+				`${environment.apiUrl}/tutors/${tutorId}/courses`
+			)
+			.toPromise<Array<Course>>();
+	}
+
+	public addCourseToTutorByTutorIdAndCourseId(
+		tutorId: number,
+		courseId: number
+	): Promise<number> {
+		return this.httpClient
+			.post<number>(
+				`${environment.apiUrl}/tutors/${tutorId}/courses`,
+				courseId
+			)
+			.toPromise<number>();
 	}
 }

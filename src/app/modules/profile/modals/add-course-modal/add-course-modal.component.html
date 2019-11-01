@@ -1,0 +1,32 @@
+<form class="container" [formGroup]="addCourseForm">
+	<div class="image" [ngStyle]="{ 'background-color': backgroundColor }">
+		<p>{{ courseName | slice: 0:1 | uppercase }}</p>
+	</div>
+
+	<div class="title">
+		<p>Nuevo curso</p>
+	</div>
+
+	<div class="message">
+		<p>Demuestre a los estudiantes el curso que dominas</p>
+	</div>
+
+	<div class="add-course-data">
+		<p>Nombre del curso</p>
+		<input
+			type="text"
+			placeholder="Calculo 2, Programacion 1, Fisica 1, ..."
+			formControlName="courseName"
+		/>
+
+		<p class="error-message" *ngIf="errorType === 2">Curso no encontrado</p>
+		<p class="error-message" *ngIf="errorType === 3">Tutor no encontrado</p>
+		<p class="error-message" *ngIf="errorType === 4">
+			Ya tienes agregado el curso
+		</p>
+	</div>
+
+	<div class="add-course-button">
+		<button type="submit" (click)="addCourse()">Agregar curso</button>
+	</div>
+</form>

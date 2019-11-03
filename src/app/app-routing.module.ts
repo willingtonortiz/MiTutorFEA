@@ -6,7 +6,7 @@ import { RegisterComponent } from "./modules/register/pages/register/register.co
 const routes: Routes = [
 	{
 		path: "",
-		redirectTo: "profile",
+		redirectTo: "login",
 		pathMatch: "full"
 	},
 	{
@@ -24,6 +24,10 @@ const routes: Routes = [
 	{
 		path: "register",
 		component: RegisterComponent
+	},
+	{
+		path: "login",
+		loadChildren: "./modules/login/login.module#LoginModule"
 	}
 ];
 

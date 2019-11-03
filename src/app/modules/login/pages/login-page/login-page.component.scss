@@ -1,0 +1,26 @@
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	background-color: #ffffff;
+
+	app-login,
+	app-register {
+		// border: 1px solid red;
+		width: 50%;
+	}
+}
+
+@media (max-width: 720px) {
+	.container {
+		display: flex;
+		flex-flow: column nowrap;
+		height: 200vh;
+
+		app-login,
+		app-register {
+			width: 100vw;
+			height: 100vh;
+		}
+	}
+}

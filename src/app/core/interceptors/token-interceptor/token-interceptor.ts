@@ -9,6 +9,7 @@ import {
 import { Observable } from "rxjs";
 import { AuthenticationService } from "../../authentication";
 import { User } from "src/app/shared/models";
+import { UserCredentials } from "src/app/shared/dtos/UserCredential";
 
 @Injectable({
 	providedIn: "root"
@@ -20,10 +21,10 @@ export class TokenInterceptor implements HttpInterceptor {
 		request: HttpRequest<any>,
 		next: HttpHandler
 	): Observable<HttpEvent<any>> {
-		const currentUser: User = this.authenticationService.userValue;
-		const isLoggedIn: any = currentUser && currentUser.token;
+		const currentUser: UserCredentials = this.authenticationService
+			.userValue;
 
-		console.log(isLoggedIn);
+		const isLoggedIn: any = currentUser && currentUser.token;
 
 		if (isLoggedIn) {
 			request = request.clone({

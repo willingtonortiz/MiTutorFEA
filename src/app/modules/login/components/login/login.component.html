@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="form-login">
+		<header>
+			<img src="../../../../../assets/images/logo.svg" />
+		</header>
+		<div class="header-login">
+			<h2>Login</h2>
+			<div class="line"></div>
+		</div>
+
+		<form [formGroup]="loginForm" (ngSubmit)="login()">
+			<div class="field">
+				<label>Usuario</label>
+				<input
+					placeholder="Ingrese su usuario"
+					formControlName="username"
+				/>
+				<span
+					class="error"
+					*ngIf="username.hasError('required') && username.dirty"
+					>Ingrese el nombre de usuario</span
+				>
+			</div>
+
+			<div class="field">
+				<label>Contraseña</label>
+				<input
+					placeholder="Ingrese su contraseña"
+					formControlName="password"
+				/>
+				<span
+					class="error"
+					*ngIf="password.hasError('required') && password.dirty"
+					>Ingrese el nombre de usuario</span
+				>
+			</div>
+
+			<span class="error">{{ errorMessage }}</span>
+
+			<div class="field">
+				<button type="submit">Ingresar</button>
+			</div>
+		</form>
+	</div>
+</div>

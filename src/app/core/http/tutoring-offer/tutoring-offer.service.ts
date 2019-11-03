@@ -21,4 +21,14 @@ export class TutoringOfferService {
 			)
 			.toPromise<Array<TutoringOfferInfo>>();
 	}
+
+	public findAllByTutorId(
+		tutorId: number
+	): Promise<Array<TutoringOfferInfo>> {
+		return this.httpClient
+			.get<Array<TutoringOfferInfo>>(
+				`${environment.apiUrl}/tutors/${tutorId}/tutoringoffers`
+			)
+			.toPromise<Array<TutoringOfferInfo>>();
+	}
 }

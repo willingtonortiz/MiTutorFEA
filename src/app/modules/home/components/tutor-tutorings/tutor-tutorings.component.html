@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="no-tutorings" *ngIf="tutoringOffers.length === 0">
+		<div class="information">
+			<h1>No tienes tutorías</h1>
+			<p>Publica tu primera tutoría</p>
+		</div>
+
+		<div class="new-tutoring">
+			<button>Nueva tutoría</button>
+		</div>
+	</div>
+
+	<div class="tutoring-offers" *ngIf="tutoringOffers.length > 0">
+		<h1>Mis tutorias</h1>
+
+		<div class="list">
+			<div
+				class="tutoring-offer"
+				*ngFor="let item of tutoringOffers; let i = index"
+			>
+				<div class="box" [ngStyle]="{ 'background-color': colors[i] }">
+					<p>{{ item.courseName | slice: 0:1 }}</p>
+				</div>
+				<p class="name">
+					{{ item.courseName | titlecase }}
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -17,7 +17,7 @@
 		}
 	}
 
-	.side-bar {
+	app-home-side-bar {
 		display: none;
 	}
 
@@ -31,37 +31,30 @@
 @media only screen and (min-width: 1024px) {
 	.container {
 		height: 100vh;
+		padding: 16px 32px;
+
 		display: grid;
 		grid-template-columns: 3fr 9fr;
 		grid-template-rows: min-content;
-		gap: 16px;
+		gap: 32px;
 		align-items: flex-start;
+
+		.navbar,
+		app-home-side-bar,
+		.results {
+			// border: 1px solid blue;
+			box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+		}
 
 		.navbar {
 			grid-column: 1 / span 2;
 		}
 
-		.side-bar {
+		app-home-side-bar {
+			display: block;
 			grid-column: 1 / span 1;
 			align-self: stretch;
-
-			margin: 16px;
-			box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
-			border-radius: 5px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-
-			button {
-				padding: 12px 20px;
-				background-color: #4e83ed;
-				color: white;
-				border-radius: 5px;
-				border: none;
-				font-size: 18px;
-				font-weight: normal;
-				cursor: pointer;
-			}
 		}
 
 		.results {

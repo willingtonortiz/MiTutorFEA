@@ -1,0 +1,99 @@
+.container {
+	height: 100%;
+	padding: 16px;
+
+	.tutoring-offers {
+		height: 525px;
+		display: flex;
+		flex-flow: column nowrap;
+
+		h1 {
+			text-align: center;
+			font-size: 24px;
+			color: #4e8efc;
+		}
+
+		.list {
+			flex: 1;
+			margin: 8px 0;
+			overflow-y: auto;
+
+			display: flex;
+			flex-flow: column nowrap;
+
+			.tutoring-offer {
+				margin: 4px 0;
+				align-items: center;
+				cursor: pointer;
+
+				display: flex;
+				flex-flow: row nowrap;
+
+				.box {
+					width: 60px;
+					height: 60px;
+					margin-right: 16px;
+					font-size: 28px;
+					border-radius: 5px;
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+
+				.name {
+					font-size: 18px;
+				}
+			}
+		}
+	}
+
+	.no-tutorings {
+		height: 100%;
+
+		display: flex;
+		flex-flow: column nowrap;
+
+		.information {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: center;
+			align-items: center;
+
+			flex: 1;
+
+			h1 {
+				color: #4e8efc;
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			p {
+				font-size: 18px;
+			}
+		}
+
+		.new-tutoring {
+			flex: 1;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			button {
+				background-color: #4e8efc;
+				color: white;
+				font-size: 24px;
+				padding: 8px 20px;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				transition: all ease-in 0.25s;
+
+				&:hover {
+					transform: scale(1.05);
+				}
+			}
+		}
+	}
+}

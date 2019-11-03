@@ -22,6 +22,12 @@ import {
 
 // services
 import { SearchTutoringOffersAnsTutorsService } from "./services";
+import { TutorTutoringsComponent } from "./components/tutor-tutorings/tutor-tutorings.component";
+import { TutorAvailabilityComponent } from "./components/tutor-availability/tutor-availability.component";
+import { HomeSideBarComponent } from "./components/home-side-bar/home-side-bar.component";
+import { StudentSideBarComponent } from "./components/student-side-bar/student-side-bar.component";
+import { TutorSideBarComponent } from "./components/tutor-side-bar/tutor-side-bar.component";
+import { ColorService } from "src/app/core/services";
 
 @NgModule({
 	imports: [CommonModule, HomeRoutingModule, HttpClientModule, FormsModule],
@@ -30,13 +36,19 @@ import { SearchTutoringOffersAnsTutorsService } from "./services";
 		TutorInfoComponent,
 		TutorInfoGroupComponent,
 		TutoringOfferInfoComponent,
-		TutoringOfferInfoGroupComponent
+		TutoringOfferInfoGroupComponent,
+		TutorTutoringsComponent,
+		TutorAvailabilityComponent,
+		HomeSideBarComponent,
+		StudentSideBarComponent,
+		TutorSideBarComponent
 	],
 	providers: [
 		TutoringOfferService,
 		CourseService,
 		TutorService,
-		SearchTutoringOffersAnsTutorsService
+		SearchTutoringOffersAnsTutorsService,
+		// ColorService
 	]
 })
 export class HomeModule {}

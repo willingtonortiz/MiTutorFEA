@@ -1,0 +1,5 @@
+<div class="container">
+	<app-student-side-bar *ngIf="role === 'STUDENT'"></app-student-side-bar>
+
+	<app-tutor-side-bar *ngIf="role === 'TUTOR'"></app-tutor-side-bar>
+</div>

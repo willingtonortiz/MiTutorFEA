@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 	public loginForm: FormGroup;
-	public errorMessage: string = "asdsad";
+	public errorMessage: string = "";
 
 	constructor(
 		private _formBuilder: FormBuilder,

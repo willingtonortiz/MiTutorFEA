@@ -1,25 +1,25 @@
 import { Injectable, ɵConsole } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
-import { University } from 'src/app/shared/models/University/University';
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
+import { map } from "rxjs/operators";
+import { University } from "src/app/shared/models/University/University";
 
 @Injectable({
 	providedIn: "root"
 })
 export class UniversityService {
-	constructor(
+	constructor(private httpClient: HttpClient) {}
 
-		private httpClient:HttpClient
-	) {}
-
-
-	 public async findAll():Promise<Array<University>>{
+	public findAll(): Promise<Array<University>> {
 		const url = `${environment.apiUrl}/universities`;
-		return  this.httpClient.get<Array<University>>(url).pipe( map((universities:Array<University>)=>{
+		return this.httpClient
+			.get<Array<University>>(url)
+			.toPromise<Array<University>>();
+	}
 
-			return universities;
-		})
-		).toPromise<Array<University>>();
+	public findByUserId(userId: number): Promise<University> {
+		return this.httpClient
+			.get<University>(`${environment.apiUrl}/users/${userId}/university`)
+			.toPromise<University>();
 	}
 }

@@ -19,11 +19,11 @@ const routes: Routes = [
 	},
 	{
 		path: "subscription",
-		component: SubscriptionComponent
+		loadChildren: "./modules/subscription/subscription.module#SubscriptionModule"
 	},
 	{
 		path: "register",
-		component: RegisterComponent
+		loadChildren:"./modules/register/register.module#RegisterModule"
 	},
 	{
 		path: "login",

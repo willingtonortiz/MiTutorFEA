@@ -13,16 +13,11 @@ export class UserService {
   ) { }
 
   public async createUser(userRegister:UserRegister):Promise<any>{
-	const httpOptions = {
-		headers: new HttpHeaders({
-			"Content-Type": "application/json"
-		})
 
-	};
 
 	const url = `${environment.apiUrl}/register`;
 
 
-	return this.httpClient.post(url,userRegister,httpOptions);
+	return this.httpClient.post(url,userRegister);
   }
 }

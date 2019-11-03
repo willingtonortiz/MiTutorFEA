@@ -6,6 +6,7 @@ import { environment } from "src/environments/environment";
 import { map } from "rxjs/operators";
 import { UserRegister } from "src/app/shared/dtos/Input/UserRegister";
 import { UserCredentials } from "src/app/shared/dtos/UserCredential";
+import { UserRegisterResponse } from 'src/app/shared/dtos/Output/userRegisterResponse';
 
 @Injectable({
 	providedIn: "root"
@@ -57,11 +58,12 @@ export class AuthenticationService {
 		this.currentUserSubject.next(null);
 	}
 
-	public register(user: UserRegister) {
+	public async register(user: UserRegister):Promise<UserRegister> {
 		const uri = `${environment.apiUrl}/register`;
 
-		// CORREGIR!!!
 
-		return this.httpClient.post(uri, user).toPromise<any>();
+
+		//return this.httpClient.post<UserRegister>(uri, user).toPromise<UserRegister>();
+		return this.httpClient.post<UserRegister>(uri, user).pipe( map((user:any)=>{return user})).toPromise<UserRegister>();
 	}
 }

@@ -10,15 +10,11 @@ export class SuscriptionService {
 	constructor(private httpClient: HttpClient) {}
 
 	public async createMembership(membershipDTO: MembershipDTO): Promise<any> {
-		const httpOptions = {
-			headers: new HttpHeaders({
-				"Content-Type": "application/json"
-			})
-		};
+
 
 		const url = `${environment.apiUrl}/users/subscription`;
 
 
-		return this.httpClient.post(url, membershipDTO, httpOptions).toPromise<any>();
+		return this.httpClient.post<MembershipDTO>(url, membershipDTO).toPromise<MembershipDTO>();
 	}
 }

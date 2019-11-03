@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { FormsModule } from '@angular/forms';
 import { SuscriptionService } from 'src/app/core';
-import { HttpClientModule } from '@angular/common/http';
+import { SubscriptionRoutingModule } from './subscription-routing.module';
 
 
 
@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
 	CommonModule,
 	FormsModule,
-	HttpClientModule
+	SubscriptionRoutingModule
   ],
   providers:[
 	  SuscriptionService

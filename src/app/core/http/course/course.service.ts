@@ -50,4 +50,6 @@ export class CourseService {
 			)
 			.toPromise<number>();
 	}
+
+
 }

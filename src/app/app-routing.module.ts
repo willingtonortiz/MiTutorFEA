@@ -28,6 +28,10 @@ const routes: Routes = [
 	{
 		path: "login",
 		loadChildren: "./modules/login/login.module#LoginModule"
+	},
+	{
+		path: 'publishTutoring',
+		loadChildren: './modules/publish-tutoring/publish.module#PublishModule'
 	}
 ];
 

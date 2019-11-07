@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { CourseService, UniversityService } from "src/app/core";
+import {
+	CourseService,
+	UniversityService,
+	AuthenticationService
+} from "src/app/core";
 import {
 	FormBuilder,
 	FormGroup,
@@ -8,6 +12,7 @@ import {
 } from "@angular/forms";
 import { Course } from "src/app/shared/models";
 import { ModalManagerService, CourseListService } from "../../services";
+import { University } from "src/app/shared/models/University/University";
 
 @Component({
 	selector: "app-add-course-modal",
@@ -23,7 +28,9 @@ export class AddCourseModalComponent implements OnInit {
 		private _courseService: CourseService,
 		private _formBuilder: FormBuilder,
 		private _modalManagerService: ModalManagerService,
-		private _tutorCourseListService: CourseListService
+		private _tutorCourseListService: CourseListService,
+		private _universityService: UniversityService,
+		private _authenticationService: AuthenticationService
 	) {
 		this.addCourseForm = this._formBuilder.group({
 			courseName: new FormControl("", [Validators.required])
@@ -45,18 +52,24 @@ export class AddCourseModalComponent implements OnInit {
 			try {
 				this.errorType = 0;
 
+				const userId: number = this._authenticationService.userValue.id;
+
+				const university: University = await this._universityService.findByUserId(
+					userId
+				);
+
 				const foundCourse: Course = await this._courseService.findByUniversityIdAndCourseName(
-					3,
+					university.id,
 					this.courseName
 				);
 
 				const result = await this._courseService.addCourseToTutorByTutorIdAndCourseId(
-					7,
+					userId,
 					foundCourse.id
 				);
 
 				this._modalManagerService.closeModal();
-				this._tutorCourseListService.updateCourseList(7);
+				this._tutorCourseListService.updateCourseList();
 			} catch (error) {
 				if (error.error === null) {
 					this.errorType = 2;

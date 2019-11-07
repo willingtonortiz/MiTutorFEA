@@ -13,7 +13,7 @@ export class CoursesContainerComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this._tutorCourseListService.updateCourseList(7);
+		this._tutorCourseListService.updateCourseList();
 	}
 
 	public addCourse() {

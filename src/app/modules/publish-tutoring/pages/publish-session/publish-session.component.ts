@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { PublishTutoringService } from '../../services/index';
-import { TutoringSessionRequest } from 'src/app/shared/dtos/Input/TutoringSessionRequest';
-import { Topic } from 'src/app/shared/models/topic/Topic';
-import { TopicService, CourseService } from 'src/app/core';
+import { Component, OnInit } from "@angular/core";
+import { PublishTutoringService } from "../../services/index";
+import { TutoringSessionRequest } from "src/app/shared/dtos/Input/TutoringSessionRequest";
+import { Topic } from "src/app/shared/models/topic/Topic";
+import { TopicService, CourseService } from "src/app/core";
+import { Router } from "@angular/router";
 
 @Component({
-	selector: 'app-publish-session',
-	templateUrl: './publish-session.component.html',
-	styleUrls: ['./publish-session.component.scss']
+	selector: "app-publish-session",
+	templateUrl: "./publish-session.component.html",
+	styleUrls: ["./publish-session.component.scss"]
 })
 export class PublishSessionComponent implements OnInit {
-
 	public tutoringSession = {
-		place: '',
+		place: "",
 		startTime: null,
 		endTime: null,
-		description: '',
+		description: "",
 		price: null,
-		topics: [],
+		topics: []
 	} as TutoringSessionRequest;
 
 	public avaliableTopics: Array<Topic> = [];
@@ -26,12 +26,17 @@ export class PublishSessionComponent implements OnInit {
 	public errors: Array<string> = [];
 	public sessionsCreated: Array<TutoringSessionRequest> = [];
 
-	constructor(private courseService: CourseService, private tutoringService: PublishTutoringService) {
-	}
+	constructor(
+		private courseService: CourseService,
+		private tutoringService: PublishTutoringService,
+		private _router: Router
+	) {}
 
 	async ngOnInit() {
-		console.log('Session');
-		this.avaliableTopics = await this.courseService.findTopics(this.tutoringService.offerCourse());
+		console.log("Session");
+		this.avaliableTopics = await this.courseService.findTopics(
+			this.tutoringService.offerCourse()
+		);
 	}
 
 	private checkRepeatedTopics(topicId: number) {
@@ -43,11 +48,13 @@ export class PublishSessionComponent implements OnInit {
 		return false;
 	}
 
-
 	selectTopic() {
 		console.log(this.selectedTopic);
 
-		if (this.selectedTopic !== 0 && !this.checkRepeatedTopics(this.selectedTopic.id)) {
+		if (
+			this.selectedTopic !== 0 &&
+			!this.checkRepeatedTopics(this.selectedTopic.id)
+		) {
 			this.selectedTopics.push(this.selectedTopic);
 		}
 	}
@@ -63,20 +70,18 @@ export class PublishSessionComponent implements OnInit {
 		}
 		this.sessionsCreated.push(this.tutoringSession);
 
-
 		this.tutoringSession = {
-			place: '',
+			place: "",
 			startTime: null,
 			endTime: null,
-			description: '',
+			description: "",
 			price: null,
-			topics: [],
+			topics: []
 		} as TutoringSessionRequest;
 
 		this.selectedTopics = [];
 		this.selectedTopic = null;
 		this.errors = [];
-
 	}
 
 	deleteSession(index) {
@@ -86,8 +91,6 @@ export class PublishSessionComponent implements OnInit {
 	publishTutoring() {
 		this.tutoringService.setSessions(this.sessionsCreated);
 		this.tutoringService.publishTutoring();
+		this._router.navigate(["/home"]);
 	}
-
-
-
 }

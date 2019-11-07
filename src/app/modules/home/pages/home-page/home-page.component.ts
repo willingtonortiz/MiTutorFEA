@@ -7,6 +7,7 @@ import {
 import { Course } from "src/app/shared/models";
 import { TutoringOfferInfo, TutorInfo } from "src/app/shared/dtos/Input";
 import { SearchTutoringOffersAnsTutorsService } from "../../services";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-home-page",
@@ -18,13 +19,13 @@ export class HomePageComponent implements OnInit {
 
 	constructor(
 		private _searchTutoringOffersAnsTutorsService: SearchTutoringOffersAnsTutorsService,
-		private _authenticationService: AuthenticationService
+		private _authenticationService: AuthenticationService,
+		private _router: Router
 	) {}
 
 	ngOnInit() {
 		// Se debe quitar esto
 		//this.courseName = "calculo 2";
-		console.log(this._authenticationService.userValue.role);
 		this.onEnter();
 	}
 
@@ -40,5 +41,10 @@ export class HomePageComponent implements OnInit {
 		this._searchTutoringOffersAnsTutorsService.findTutorsByCourseName(
 			this.courseName
 		);
+	}
+
+	public logout() {
+		this._authenticationService.logout();
+		this._router.navigate(["/login"]);
 	}
 }

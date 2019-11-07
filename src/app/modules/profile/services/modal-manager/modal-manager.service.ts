@@ -15,7 +15,7 @@ export class ModalManagerService {
 		this._modalCodeSubject = new BehaviorSubject<number>(1);
 		this._modalCodeObservable = this._modalCodeSubject.asObservable();
 
-		this._displayModalSubject = new BehaviorSubject<boolean>(true);
+		this._displayModalSubject = new BehaviorSubject<boolean>(false);
 		this._displayModalObservable = this._displayModalSubject.asObservable();
 	}
 

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Subject, BehaviorSubject, Observable } from "rxjs";
 import { Course } from "src/app/shared/models";
-import { CourseService } from "src/app/core";
+import { CourseService, AuthenticationService } from "src/app/core";
 
 @Injectable({
 	providedIn: "root"
@@ -10,7 +10,10 @@ export class CourseListService {
 	private _courseListSubject: BehaviorSubject<Array<Course>>;
 	private _courseListObservable: Observable<Array<Course>>;
 
-	constructor(private courseService: CourseService) {
+	constructor(
+		private courseService: CourseService,
+		private _authenticationService: AuthenticationService
+	) {
 		this._courseListSubject = new BehaviorSubject<Array<Course>>(
 			new Array<Course>()
 		);
@@ -18,7 +21,8 @@ export class CourseListService {
 		this._courseListObservable = this._courseListSubject.asObservable();
 	}
 
-	public async updateCourseList(tutorId: number): Promise<void> {
+	public async updateCourseList(): Promise<void> {
+		const tutorId: number = this._authenticationService.userValue.id;
 		const courses: Array<
 			Course
 		> = await this.courseService.findAllByTutorId(tutorId);

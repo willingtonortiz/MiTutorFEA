@@ -30,6 +30,8 @@ export class TutorTutoringsComponent implements OnInit {
 		try {
 			const user: UserCredentials = this._authenticationService.userValue;
 
+			// TODO: Utilizar las credenciales del usuario
+
 			this.tutoringOffers = await this._tutoringOfferService.findAllByTutorId(
 				5
 			);

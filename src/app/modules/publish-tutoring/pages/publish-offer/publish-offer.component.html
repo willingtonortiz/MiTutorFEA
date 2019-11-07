@@ -1,18 +1,44 @@
 <div class="container-nuevatutoria">
     <div class="form-container">
-      <h2>Nueva oferta</h2>
+	  <h2>Nueva oferta</h2>
+
+	  <div *ngIf="errors.length">
+		<b>Por favor corrija los siguientes errores:</b>
+
+		<ul style="margin-left:5%">
+		  	<li *ngFor="let error of errors">
+			  {{ error }}
+			</li>
+		</ul>
+
+	  </div>
 
 
-      <form>
+      <form (ngSubmit)="crearOferta()">
 
 		<div class="field">
 			<label>Seleccione un curso</label>
-			
+			<select (change)="selectCourse($event.target.value)">
+				<option [value]="0"> Elija un curso</option>
+				<option *ngFor="let course of avaliableCourses" [value]="course.id" >{{course.name}}</option>
+			</select>
 		</div>
 
+		<div class="field">
+			<label >Participantes máximos en cada sesión</label>
+			<input required [(ngModel)]="tutoringOffer.capacity" name="capacity" type="number" placeholder="Ingrese la capacidad maxima" />
+		</div>
+
+		<div class="field">
+			<label >Descripcion de la oferta</label>
+			<textarea required [(ngModel)]="tutoringOffer.description" name="description"  cols="30" rows="10"></textarea>
+		</div>
+
+		<button type="submit" class="btn">Crear oferta</button>
 
       </form>
 
 
-    </div>
-  </div>
+	</div>
+
+</div>

@@ -1,0 +1,94 @@
+<div class="container-nuevatutoria">
+		<div class="form-container">
+		  <h2>Nueva sesion</h2>
+
+		  <div *ngIf="errors.length">
+				<b>Por favor corrija los siguientes errores:</b>
+				<ul style="margin-left:5%">
+					  <li *ngFor="let error of errors">
+					  {{ error }}
+					</li>
+				</ul>
+		  </div>
+
+
+		<form (ngSubmit)="createSession()">
+
+			<div class="field">
+			  <label for>Ubicacion</label>
+			  <input required [(ngModel)]="tutoringSession.place" name="place" type="text" placeholder="Ingrese la ubicacion" />
+			</div>
+
+			<div class="field">
+			  <label for>Fecha y hora de inicio</label>
+			  <input required [(ngModel)]="tutoringSession.startTime" name="start-time" type="datetime-local" placeholder="Ingrese la fecha de inicio" />
+			</div>
+
+			<div class="field">
+			  <label for>Fecha y hora de fin</label>
+			  <input required [(ngModel)]="tutoringSession.endTime" name="end-time" type="datetime-local" placeholder="Ingrese la fecha de fin" />
+			</div>
+
+			<div class="field">
+			  <label for>Precio</label>
+			  <input required [(ngModel)]="tutoringSession.price" name="price" type="number" placeholder="Ingrese el precio" />
+			</div>
+
+			<div class="field">
+			  <label for>Descripción</label>
+			  <textarea required [(ngModel)]="tutoringSession.description" cols="30" rows="10" name="description"></textarea>
+			</div>
+
+			<div class="field">
+					<label>Seleccione un tema</label>
+					<select [(ngModel)]="selectedTopic" (change)="selectTopic()" name="topicSelection">
+						<option [value]="0"> Elija un tema</option>
+						<option *ngFor="let topic of avaliableTopics" [ngValue]=topic >{{topic.name}}</option>
+					</select>
+			</div>
+
+			<div  *ngFor="let topic of selectedTopics" style="margin-bottom: 2%;">
+					<p>
+						{{topic.name}}
+						<button (click)="deleteTopic(topic.id)" class="del">x</button>
+					</p>
+			</div>
+
+			<div style="margin-bottom: 5%;">
+				<button type="submit" class="btn" > Crear Session</button>
+			</div>
+
+		</form>
+
+
+		<div *ngIf="sessionsCreated.length">
+			<hr />
+				<div *ngFor="let sessions of sessionsCreated; let i = index" style="margin-top: 5%; margin-bottom: 5%;">
+					<p>
+						Session N° {{i}}
+						<button (click)="deleteSession(i)" class="del">x</button>
+					</p>
+				</div>
+			<hr />
+		</div>
+
+
+		<div style="margin-bottom: 5%;">
+				<button (click)="publishTutoring()"  class="btn" > Publicar tutoria </button>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+	  </div>

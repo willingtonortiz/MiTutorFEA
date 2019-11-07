@@ -61,8 +61,6 @@ export class AuthenticationService {
 	public async register(user: UserRegister):Promise<UserRegister> {
 		const uri = `${environment.apiUrl}/register`;
 
-
-
 		//return this.httpClient.post<UserRegister>(uri, user).toPromise<UserRegister>();
 		return this.httpClient.post<UserRegister>(uri, user).pipe( map((user:any)=>{return user})).toPromise<UserRegister>();
 	}

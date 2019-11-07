@@ -18,22 +18,37 @@ export class PublishTutoringService {
 		this.tutoringOfferObservable = this.tutoringOfferSubject.asObservable();
 	}
 
-	public set createOffer(tutoringOffer: TutoringOfferRequest) {
+	public createOffer(tutoringOffer: TutoringOfferRequest) {
 		this.tutoringOfferSubject.next(tutoringOffer);
 	}
 
-	public set createSession(tutoringSession: TutoringSessionRequest) {
+	public createSession(tutoringSession: TutoringSessionRequest) {
 		let tutoringOfferAux = this.tutoringOfferSubject.value;
 		tutoringOfferAux.tutoringSessions.push(tutoringSession);
 		this.tutoringOfferSubject.next(tutoringOfferAux);
+
 	}
 
-	public get sessionSize() {
+	public sessionSize() {
 		return this.tutoringOfferSubject.value.tutoringSessions.length;
 	}
 
-	public publishTutoring() {
-		this.http.post(`${environment.apiUrl}/tutoringoffers`, this.tutoringOfferSubject.value);
+	public offerCourse(){
+		return this.tutoringOfferSubject.value.courseId;
+	}
+
+	public setSessions( tutoringSessions: Array<TutoringSessionRequest>){
+		let tutoringOfferAux = this.tutoringOfferSubject.value;
+		tutoringOfferAux.tutoringSessions = tutoringSessions;
+		this.tutoringOfferSubject.next(tutoringOfferAux);
+
+	}
+
+	public publishTutoring():Promise<any>  {
+
+		let tutoringOffer = this.tutoringOfferSubject.value;
+		console.log(tutoringOffer);
+		return this.http.post(`${environment.apiUrl}/tutoringoffers`,tutoringOffer).toPromise<any>();
 	}
 
 }

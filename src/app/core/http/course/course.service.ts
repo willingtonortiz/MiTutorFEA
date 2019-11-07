@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Course } from "src/app/shared/models";
 import { environment } from "src/environments/environment";
+import { Topic } from 'src/app/shared/models/topic/Topic';
 
 @Injectable({
 	providedIn: "root"
@@ -50,4 +51,24 @@ export class CourseService {
 			)
 			.toPromise<number>();
 	}
+
+	public findByUniversityId(universityId: number): Promise<Array<Course>> {
+		return this.httpClient
+		.get<Array<Course>>(
+			`${environment.apiUrl}/universities/${universityId}/courses`
+		)
+		.toPromise<Array<Course>>();
+
+	}
+
+
+	public findTopics(courseId: number): Promise<Array<Course>> {
+		return this.httpClient
+		.get<Array<Topic>>(
+			`${environment.apiUrl}/courses/${courseId}/topics`
+		)
+		.toPromise<Array<Topic>>();
+	}
+
+
 }

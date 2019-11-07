@@ -1,0 +1,53 @@
+
+  <div class="container-tutoriaDetail-master">
+
+
+    <div class="container-tutoria-details">
+      <div class="details">
+        <h2>{{tutoringOffer.course}}</h2>
+
+        <div class="div1" style="margin-bottom: 2%;">
+          <div class="detail">
+            <p class="label-detail">Inicio</p>
+            <p class="text-detail">{{tutoringOffer.startTime |  date:'medium'}}</p>
+          </div>
+
+          <div class="detail">
+            <p class="label-detail">Fin</p>
+            <p class="text-detail">{{tutoringOffer.endTime  | date:'medium'}}</p>
+          </div>
+
+          <div class="detail">
+            <p class="label-detail">Descripcion</p>
+            <p class="text-detail">{{tutoringOffer.description}}</p>
+          </div>
+
+          <div class="detail">
+             <p class="label-detail">Universidad</p>
+            <p class="text-detail">{{tutoringOffer.universityName}}</p>
+          </div>
+		</div>
+
+		<hr />
+
+		<div  style=" overflow-wrap: break-word;">
+
+		<table class="detail" >
+			<tr *ngFor="let sessions of tutoringOffer.tutoringSessionResponses; let i=index"  >
+				<td class="detail session">
+					<div  style="width: 100%;">
+						<p class="label-detail session"> Session N° {{i}} </p>
+					</div>
+				</td>
+				<td><button (click)="viewSession(i)" class="btn" style="margin-left: 30%; ">Details</button></td>
+			 </tr>
+		</table>
+		</div>
+
+	  </div>
+
+
+
+    </div>
+
+  </div>

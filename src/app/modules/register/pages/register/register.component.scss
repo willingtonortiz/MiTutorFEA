@@ -71,3 +71,14 @@
 	cursor: pointer;
 	font-size: 1.25em;
   }
+  @media (max-width:720px) {
+	.register-container .register-body .field select {
+	  width: 300px;
+	}
+	.field-login{display: none}
+
+	.register-container header{
+	  padding: .5em 0 !important;
+	}
+
+  }

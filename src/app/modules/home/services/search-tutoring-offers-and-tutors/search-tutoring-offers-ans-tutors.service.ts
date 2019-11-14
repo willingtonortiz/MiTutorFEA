@@ -58,7 +58,7 @@ export class SearchTutoringOffersAnsTutorsService {
 		try {
 			// Finding course
 			const course: Course = await this.courseService.findByUniversityIdAndCourseName(
-				3,
+				1,
 				courseName.toLowerCase()
 			);
 
@@ -80,7 +80,7 @@ export class SearchTutoringOffersAnsTutorsService {
 		try {
 			// Finding course
 			const course: Course = await this.courseService.findByUniversityIdAndCourseName(
-				3,
+				1,
 				courseName.toLowerCase()
 			);
 
@@ -88,7 +88,7 @@ export class SearchTutoringOffersAnsTutorsService {
 			const tutors: Array<
 				TutorInfo
 			> = await this.tutorService.findByUniversityIdAndCourseId(
-				3,
+				1,
 				course.id
 			);
 

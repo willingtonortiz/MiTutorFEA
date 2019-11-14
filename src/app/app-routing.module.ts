@@ -19,15 +19,25 @@ const routes: Routes = [
 	},
 	{
 		path: "subscription",
-		loadChildren: "./modules/subscription/subscription.module#SubscriptionModule"
+		loadChildren:
+			"./modules/subscription/subscription.module#SubscriptionModule"
 	},
 	{
 		path: "register",
-		loadChildren:"./modules/register/register.module#RegisterModule"
+		loadChildren: "./modules/register/register.module#RegisterModule"
 	},
 	{
 		path: "login",
 		loadChildren: "./modules/login/login.module#LoginModule"
+	},
+	{
+		path: "publish-tutoring",
+		loadChildren: "./modules/publish-tutoring/publish.module#PublishModule"
+	},
+	{
+		path: "view-tutoring/:id",
+		loadChildren:
+			"./modules/view-tutoring/view-tutoring.module#ViewTutoringModule"
 	}
 ];
 

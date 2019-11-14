@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { MembershipDTO } from 'src/app/shared/dtos/Input/MembershipDTO';
-import { MembershipServiceService } from '../../services/membership-service.service';
-import {Router} from '@angular/router';
-
+import { MembershipDTO } from "src/app/shared/dtos/Input/MembershipDTO";
+import { MembershipServiceService } from "../../services/membership-service.service";
+import { AuthenticationService } from "src/app/core";
+import { UserCredentials } from "src/app/shared/dtos/UserCredential";
+import { Router } from "@angular/router";
 @Component({
 	selector: "app-subscription",
 	templateUrl: "./subscription.component.html",
@@ -12,32 +13,33 @@ import {Router} from '@angular/router';
 export class SubscriptionComponent implements OnInit {
 	public creditCard: string = "";
 	public ccv: string = "";
-	public expirationDate:string = "";
+	public expirationDate: string = "";
+	public currentUser: UserCredentials;
+
 	constructor(
-		private router:Router,
-		private _membershipService: MembershipServiceService
-	) {}
+		private _membershipService: MembershipServiceService,
+		private _authenticationService: AuthenticationService,
+		private _router: Router
+	) {
+		this.currentUser = this._authenticationService.userValue;
+	}
 
 	ngOnInit() {
 
 	}
 
+	public async Subscription(): Promise<any> {
+		let newMembership: MembershipDTO = {
+			userId: this.currentUser.id,
+			creditCard: this.creditCard,
+			ccv: this.ccv,
+			expirationDate: this.expirationDate
+		};
 
-	public async Subscription():Promise<any>{
-
-		let idUser =  JSON.parse(localStorage.getItem("currentUser")).id
-		let newMembership:MembershipDTO = {
-			userId:idUser,
-			creditCard:this.creditCard,
-			ccv:this.ccv,
-			expirationDate:this.expirationDate
-		}
-
-		await this._membershipService.createTutor(newMembership).then( ()=>{
-			this.router.navigateByUrl('/home');
-		}
-
-		);
-
+		try {
+			await this._membershipService.createTutor(newMembership);
+			this._authenticationService.changeToTutor();
+			this._router.navigate(["/home"]);
+		} catch (error) {}
 	}
 }

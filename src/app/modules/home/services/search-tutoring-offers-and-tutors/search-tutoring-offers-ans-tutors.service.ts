@@ -12,6 +12,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 	providedIn: "root"
 })
 // TODO, se debe obtener la universidad del usuario
+// TODO: Arreglar el nombre de esta clase
 export class SearchTutoringOffersAnsTutorsService {
 	private _tutoringOffersSubject: BehaviorSubject<Array<TutoringOfferInfo>>;
 	private _tutoringOffersObservable: Observable<Array<TutoringOfferInfo>>;

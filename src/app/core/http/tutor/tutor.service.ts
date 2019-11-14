@@ -19,4 +19,12 @@ export class TutorService {
 			)
 			.toPromise<Array<TutorInfo>>();
 	}
+
+	public findUniversityId(tutorId: number): Promise<number>{
+		return this.httpClient
+			.get<number>(
+				`${environment.apiUrl}/tutors/${tutorId}/university`
+			)
+			.toPromise<number>();
+	}
 }

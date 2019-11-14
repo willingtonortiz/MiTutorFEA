@@ -80,7 +80,7 @@
 			justify-content: center;
 			align-items: center;
 
-			button {
+			a {
 				background-color: #4e8efc;
 				color: white;
 				font-size: 24px;
@@ -89,6 +89,7 @@
 				border-radius: 5px;
 				cursor: pointer;
 				transition: all ease-in 0.25s;
+				text-decoration: none;
 
 				&:hover {
 					transform: scale(1.05);

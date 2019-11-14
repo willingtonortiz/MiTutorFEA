@@ -1,0 +1,71 @@
+<div class="container-tutoriaDetail-master">
+
+		<div class="container-tutoria-details" style="min-width: 500px;">
+		  	<div class="details" >
+				<h2>Sesion de tutoria</h2>
+
+				<div  style="margin-bottom: 2%; float: left; ">
+					<div class="detail">
+						<p class="label-detail">Inicio</p>
+						<p class="text-detail">{{tutoringSession.startTime |  date:'medium'}}</p>
+					</div>
+
+					<div class="detail">
+						<p class="label-detail">Fin</p>
+						<p class="text-detail">{{tutoringSession.endTime  | date:'medium'}}</p>
+					</div>
+
+					<div class="detail">
+						<p class="label-detail">Ubicacion</p>
+						<p class="text-detail">{{tutoringSession.place}}</p>
+					</div>
+
+					<div class="detail">
+						<p class="label-detail">Descripcion</p>
+						<p class="text-detail">{{tutoringSession.description}}</p>
+					</div>
+				</div>
+
+				<div style="margin-bottom: 2%;  text-align: center; position: relative ">
+					<div class="card-tutor" >
+						<img src="" alt="">
+						<p class="tutor-name">{{tutor}}</p>
+
+						<div class="score-info-tutor">
+							<p class="score">4.6</p>
+							<p>Puntuacion</p>
+						</div>
+						<div class="navigate-profile">
+							<a>Ver perfil</a>
+						</div>
+					</div>
+					<div class="card-infotutoria"  style="margin-top: 5%;">
+						<div class="title">Participantes</div>
+						<div class="score">
+							<p>{{tutoringSession.studentCount}}</p>
+							<p>Asistirán</p>
+						</div>
+					</div>
+				</div>
+
+
+
+		  	</div>
+
+
+
+			<div class="details" style=" clear: left;">
+				<hr />
+				<div class="detail" style=" overflow-wrap: break-word;">
+						<p class="label-detail" style="margin-bottom: 2%;">Temas</p>
+							<div *ngFor="let topic of tutoringSession.topicsName" style="margin-bottom: 2%;">
+								<p class="text-detail">{{topic}} </p>
+							</div>
+				</div>
+			</div>
+
+		</div>
+
+
+</div>
+

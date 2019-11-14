@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
 import { map } from "rxjs/operators";
 import { UserRegister } from "src/app/shared/dtos/Input/UserRegister";
 import { UserCredentials } from "src/app/shared/dtos/UserCredential";
-import { UserRegisterResponse } from 'src/app/shared/dtos/Output/userRegisterResponse';
+import { UserRegisterResponse } from "src/app/shared/dtos/Output/userRegisterResponse";
 
 @Injectable({
 	providedIn: "root"
@@ -21,6 +21,7 @@ export class AuthenticationService {
 		);
 
 		this.currentUserObservable = this.currentUserSubject.asObservable();
+		// console.log(this.userValue);
 	}
 
 	public get userValue(): UserCredentials {
@@ -29,6 +30,20 @@ export class AuthenticationService {
 
 	public get userObservable(): Observable<UserCredentials> {
 		return this.currentUserObservable;
+	}
+
+	// TODO: Implementar un método en el backend que reciba un token valido
+	// y cambie el rol del usuario al tutor, y devuelva un nuevo token con el nuevo rol
+	public changeToTutor() {
+		const user: UserCredentials = this.userValue;
+
+		user.role = "TUTOR";
+
+		this.saveUser(user);
+	}
+
+	private saveUser(user: UserCredentials) {
+		localStorage.setItem("currentUser", JSON.stringify(user));
 	}
 
 	public login(username: string, password: string): Promise<UserCredentials> {
@@ -58,12 +73,17 @@ export class AuthenticationService {
 		this.currentUserSubject.next(null);
 	}
 
-	public async register(user: UserRegister):Promise<UserRegister> {
+	public async register(user: UserRegister): Promise<UserRegister> {
 		const uri = `${environment.apiUrl}/register`;
 
-
-
 		//return this.httpClient.post<UserRegister>(uri, user).toPromise<UserRegister>();
-		return this.httpClient.post<UserRegister>(uri, user).pipe( map((user:any)=>{return user})).toPromise<UserRegister>();
+		return this.httpClient
+			.post<UserRegister>(uri, user)
+			.pipe(
+				map((user: any) => {
+					return user;
+				})
+			)
+			.toPromise<UserRegister>();
 	}
 }

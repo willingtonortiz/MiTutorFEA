@@ -24,7 +24,7 @@
 			text-align: center;
 		}
 
-		button {
+		a {
 			margin-top: 4em;
 			width: 360px;
 			border-radius: 5px;
@@ -36,6 +36,7 @@
 			background: #2fe49a;
 			padding: 0.74em 0;
 			cursor: pointer;
+			text-decoration: none;
 		}
 	}
 }

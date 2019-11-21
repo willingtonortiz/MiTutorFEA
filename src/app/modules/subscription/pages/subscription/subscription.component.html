@@ -1,24 +1,35 @@
-<div class="container-subscription">
-	<div class="subscription-body">
-		<h2>Bienvenido a la membresía mi tutor</h2>
-		<p>Necesitamos que completes algunos datos para el pago de tu suscripción como tutor</p>
-		<form class="subscription-form">
-			<div class="field">
-				<label>Tarjeta de crédito</label>
-				<input name="creditCard" type="text" placeholder="Busca algún curso" [(ngModel)]="creditCard" />
-			</div>
+<div style="padding: 1em;">
+	<header>
+		<a href="/home">
+			<img src="../../../../../assets/images/logo.png" alt="">
+		</a>
+	</header>
+	<div class="container-subscription">
+		<div class="subscription-body">
 
-			<div class="field">
-				<label>CCV</label>
-				<input type="text" required name="ccv" [(ngModel)]="ccv" placeholder="Ingrese su CCV" />
-			</div>
+			<img src="../../../../../assets/images/Suscripcion.png" alt="">
+			<h2>Bienvenido a la membresía mi tutor</h2>
+			<p>Necesitamos que completes algunos datos para el pago de tu suscripción como tutor</p>
+			<form class="subscription-form">
+				<div class="field">
+					<label>Tarjeta de crédito</label>
+					<input name="creditCard" type="text" placeholder="Busca algún curso" [(ngModel)]="creditCard" />
+				</div>
 
-			<div class="field">
-				<label>Fecha de expireacion</label>
-				<input type="text" required name="expirationDate" [(ngModel)]="expirationDate" placeholder="Ingrese su fecha de expiracion" />
-			</div>
+				<div class="field">
+					<label>CCV</label>
+					<input type="text" required name="ccv" [(ngModel)]="ccv" placeholder="Ingrese su CCV" />
+				</div>
 
-			<button (click)="Subscription()" type="button">Subscribirme</button>
-		</form>
+				<div class="field">
+					<label>Fecha de expireacion</label>
+					<input type="text" required name="expirationDate" [(ngModel)]="expirationDate"
+						placeholder="Ingrese su fecha de expiracion" />
+				</div>
+
+				<button (click)="Subscription()" type="button">Subscribirme</button>
+			</form>
+		</div>
 	</div>
+
 </div>

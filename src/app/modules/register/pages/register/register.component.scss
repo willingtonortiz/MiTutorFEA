@@ -1,14 +1,26 @@
 @import "../../../../../styles.scss";
 
+.not-valid {
+	border: 1px solid #ff4766 !important;
+}
+
 .register-container {
+	height: 100vh;
+	overflow: auto;
+
 	padding: 2.5em;
-  }
-  .register-container header {
+	background: url("../../../../../../src/assets/images/RegisterBackground.png");
+	background-size: cover;
+	background-position: center center;
+}
+
+.register-container header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-  }
-  .register-container .field-login button {
+}
+
+.register-container .field-login button {
 	color: $white;
 	background: $primary-color;
 	text-align: center;
@@ -19,47 +31,85 @@
 	border: none;
 	cursor: pointer;
 	font-size: 1.25em;
-  }
-  .register-container .register-body .field {
+}
+::-webkit-scrollbar {
+	width: 10px;
+	height: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px white;
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #cfcfcf;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: $primary-color;
+}
+.register-body {
+	width: 1000px;
+	height: 600px;
+	position: absolute;
+	left: 40%;
+	top: 5%;
+
+	padding: 24px 24px 24px 24px;
+}
+
+.register-body .field-group {
+	display: flex;
+}
+.register-container .register-body .field {
 	display: flex;
 	flex-direction: column;
-	margin: 1.25em 0;
+	margin: 1.25em;
 	text-align: left;
-  }
-  .register-container .register-body h2 {
+}
+
+.register-container .register-body h2 {
 	display: flex;
 	justify-content: flex-start;
-  }
-  .register-container .register-body .register-cont .field label {
+	margin-left: 0.75em;
+}
+
+.register-container .register-body .register-cont .field label {
 	color: $primary-text;
 	opacity: 0.67;
 	font-weight: 600;
 	text-align: left;
 	margin-bottom: 0.5em;
-  }
-  .register-container .register-body .field input:focus {
+}
+
+.register-container .register-body .field input:focus {
 	border: 1px solid $primary-color;
-  }
-  .register-container .register-body .field input {
+}
+
+.register-container .register-body .field input {
 	width: 250px;
 	padding: 12px;
 	border: 1px solid #bfbfbf;
 	color: $primary-text;
 	font-size: 18px;
 	border-radius: 6px;
-  }
-  .register-container .register-body .field select {
-	width: 450px;
+}
+
+.register-container .register-body .field select {
+	width: 360px;
 	padding: 12px;
 	border: 1px solid #bfbfbf;
 	color: $primary-text;
 	font-size: 18px;
 	border-radius: 6px;
-  }
-  .register-body .field:last-child {
-	margin-top: 2em !important;
-  }
-  .register-container .register-body .field button {
+}
+
+.register-container .register-body .field button {
 	color: $white;
 	background: $primary-color;
 	text-align: center;
@@ -70,15 +120,17 @@
 	border: none;
 	cursor: pointer;
 	font-size: 1.25em;
-  }
-  @media (max-width:720px) {
+}
+
+@media (max-width: 720px) {
 	.register-container .register-body .field select {
-	  width: 300px;
+		width: 300px;
 	}
-	.field-login{display: none}
-
-	.register-container header{
-	  padding: .5em 0 !important;
+	.field-login {
+		display: none;
 	}
 
-  }
+	.register-container header {
+		padding: 0.5em 0 !important;
+	}
+}

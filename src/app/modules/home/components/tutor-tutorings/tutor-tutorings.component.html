@@ -1,4 +1,4 @@
-<div class="container">
+<div class="tutor-tutorings-component">
 	<div class="no-tutorings" *ngIf="tutoringOffers.length === 0">
 		<div class="information">
 			<h1>No tienes tutorías</h1>
@@ -11,13 +11,17 @@
 	</div>
 
 	<div class="tutoring-offers" *ngIf="tutoringOffers.length > 0">
-		<h1>Mis tutorias</h1>
+		<div class="title">
+			<img src="../../../../../assets/images/Tutoringicon.png" width="48" height="48" alt="">
+			<h1>Mis tutorías</h1>
+		</div>
 
+		<div class="new-tutoring">
+			<a routerLink="/publish-tutoring">Nueva tutoría</a>
+
+		</div>
 		<div class="list">
-			<div
-				class="tutoring-offer"
-				*ngFor="let item of tutoringOffers; let i = index"
-			>
+			<div class="tutoring-offer" *ngFor="let item of tutoringOffers; let i = index">
 				<div class="box" [ngStyle]="{ 'background-color': colors[i] }">
 					<p>{{ item.courseName | slice: 0:1 }}</p>
 				</div>

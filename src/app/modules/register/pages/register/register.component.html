@@ -1,67 +1,82 @@
 <div class="register-container">
 
-
+	<header>
+		<div class="logo">
+			<a href="/login">
+				<img src="../../../../../assets/images/logo.png" />
+			</a>
+		</div>
+	</header>
 	<div class="register-body">
 		<div class="register-cont">
-			<a routerLink="/login">
-				<img src="../../../../../assets/images/logo.svg" />
-			</a>
-			<h2>Registro</h2>
 
-			<div class="field">
-				<label>Nombres</label>
-				<input required [(ngModel)]="name" name="name" placeholder="Ingrese sus nombres" />
+			<div class="title-register">
+				<h2>Registro</h2>
 			</div>
 
-			<div class="field">
-				<label>Apellidos</label>
-				<input required [(ngModel)]="lastName" name="lastname" placeholder="Ingrese sus apellidos" />
-			</div>
-			<div class="field">
-				<label>Carrera</label>
-				<input required [(ngModel)]="career" name="career" placeholder="Ingrese su carrera" />
-			</div>
+			<div class="field-group">
+				<div class="field">
+					<label>Nombres</label>
+					<input required [(ngModel)]="name" name="name" placeholder="Ingrese sus nombres" />
+				</div>
 
-			<div class="field">
-				<label>Correo electrónico</label>
-				<input required [(ngModel)]="email" type="email" name="email" placeholder="Ingrese sus email" />
-
+				<div class="field">
+					<label>Apellidos</label>
+					<input required [(ngModel)]="lastName" name="lastname" placeholder="Ingrese sus apellidos" />
+				</div>
 			</div>
+			<div class="field-group">
+				<div class="field">
+					<label>Carrera</label>
+					<input required [(ngModel)]="career" name="career" placeholder="Ingrese su carrera" />
+				</div>
 
-			<div class="field">
-				<label>Universidad</label>
-				<select name="universityId" [(ngModel)]="universityId">
-					<option *ngFor="let obj of universities" [value]="obj.id">{{obj.name}}</option>
-				</select>
-			</div>
+				<div class="field">
+					<label>Correo electrónico</label>
+					<input required [(ngModel)]="email" type="email" name="email" placeholder="Ingrese sus email" />
 
-			<div class="field">
-				<label>Semestre</label>
-				<select required [(ngModel)]="semester" name="Semester">
-					<option value="1">Primer ciclo</option>
-					<option value="2">Segundo ciclo</option>
-					<option value="3">Tercer ciclo</option>
-					<option value="4">Cuarto ciclo</option>
-					<option value="5">Quinto ciclo</option>
-					<option value="6">Sexto ciclo</option>
-					<option value="7">Septimo ciclo</option>
-					<option value="8">Octavo ciclo</option>
-					<option value="9">Noveno ciclo</option>
-					<option value="10">Décimo ciclo</option>
-				</select>
+				</div>
 			</div>
 
-			<div class="field">
-				<label>Usuario</label>
-				<input required [(ngModel)]="username" name="Username" placeholder="Ingrese su nombre de usuario" />
+			<div class="field-group">
+				<div class="field">
+					<label>Usuario</label>
+					<input required [(ngModel)]="username" name="Username" placeholder="Ingrese su nombre de usuario" />
 
+				</div>
+
+				<div class="field">
+					<label>Contraseña</label>
+					<input required [(ngModel)]="password" type="password" name="Password"
+						placeholder="Ingrese su contraseña" />
+				</div>
 			</div>
 
-			<div class="field">
-				<label>Contraseña</label>
-				<input required [(ngModel)]="password" type="password" name="Password"
-					placeholder="Ingrese su contraseña" />
+			<div class="field-group">
+				<div class="field">
+					<label>Universidad</label>
+					<select name="universityId" [(ngModel)]="universityId">
+						<option *ngFor="let obj of universities" [value]="obj.id">{{obj.name}}</option>
+					</select>
+				</div>
+
+				<div class="field">
+					<label>Semestre</label>
+					<select required [(ngModel)]="semester" name="Semester">
+						<option value="1">Primer ciclo</option>
+						<option value="2">Segundo ciclo</option>
+						<option value="3">Tercer ciclo</option>
+						<option value="4">Cuarto ciclo</option>
+						<option value="5">Quinto ciclo</option>
+						<option value="6">Sexto ciclo</option>
+						<option value="7">Septimo ciclo</option>
+						<option value="8">Octavo ciclo</option>
+						<option value="9">Noveno ciclo</option>
+						<option value="10">Décimo ciclo</option>
+					</select>
+				</div>
 			</div>
+
 			<div class="field">
 				<button (click)="registerUser()" type="button">Registrarme</button>
 			</div>

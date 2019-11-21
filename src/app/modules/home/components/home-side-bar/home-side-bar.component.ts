@@ -10,7 +10,9 @@ export class HomeSideBarComponent implements OnInit {
 	public role: string;
 
 	constructor(private _authenticationService: AuthenticationService) {
+
 		this.role = this._authenticationService.userValue.role;
+		console.log(this.role);
 		// this.role = "TUTOR";
 	}
 

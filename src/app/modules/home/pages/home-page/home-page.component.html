@@ -1,27 +1,24 @@
-<div class="container">
+<div class="home-container">
 	<nav class="navbar">
 		<div class="logo">
 			<img src="../../../../../assets/images/logo.svg" alt="">
 		</div>
 		<div class="search">
-			<input
-				type="text"
-				placeholder="Busca algún curso"
-				[(ngModel)]="courseName"
-				(keyup.enter)="onEnter()"
-			/>
+			<input type="text" placeholder="Busca algún curso" [(ngModel)]="courseName" (keyup.enter)="onEnter()" />
 		</div>
 		<div class="avatar">
-
+			<img src="https://semantic-ui.com/images/avatar2/large/matthew.png" width="64" height="64" alt="" />
 			<button (click)="logout()">Logout</button>
 		</div>
 	</nav>
+	<div class="home-sub">
 
-	<app-home-side-bar></app-home-side-bar>
+		<app-home-side-bar></app-home-side-bar>
 
-	<div class="results">
-		<app-tutoring-offer-info-group></app-tutoring-offer-info-group>
+		<div class="results">
+			<app-tutoring-offer-info-group></app-tutoring-offer-info-group>
 
-		<app-tutor-info-group></app-tutor-info-group>
+			<app-tutor-info-group></app-tutor-info-group>
+		</div>
 	</div>
 </div>

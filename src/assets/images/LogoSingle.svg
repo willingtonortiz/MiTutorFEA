@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="78" viewBox="0 0 128 78">
+  <defs>
+    <clipPath id="clip-LogoSingle">
+      <rect width="128" height="78"/>
+    </clipPath>
+  </defs>
+  <g id="LogoSingle" clip-path="url(#clip-LogoSingle)">
+    <g id="Grupo_178" data-name="Grupo 178" transform="translate(-36.599 -47.757)">
+      <path id="Trazado_5" data-name="Trazado 5" d="M34.957,10.752,69.891,0V17.958c0,8.3-15.646,15.033-34.945,15.033S0,26.26,0,17.958c0-.065.021-.131.023-.195V0Z" transform="matrix(0.995, 0.105, -0.105, 0.995, 65.354, 84.919)" fill="#4d7bec" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+      <path id="Trazado_6" data-name="Trazado 6" d="M117.108,22.527l-12.48,4.464-1.064-2.278-4.585-.39-.654.68,3.934.933.573,1.7s8.887,18.577,7.582,27.665c0,0-5.547,3.309-11.091,0L97.851,30.452V28.383L89.6,26.522l.583,1.435,6.153,2-2.846,1.017L58.554,41.727,23.619,30.975,0,22.527,58.554,0Z" transform="matrix(0.995, 0.105, -0.105, 0.995, 45.534, 47.755)" fill="#4d7bec" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

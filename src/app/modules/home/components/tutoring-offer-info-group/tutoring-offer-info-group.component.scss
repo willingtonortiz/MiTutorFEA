@@ -1,4 +1,5 @@
-.container {
+@import "../../../../../styles.scss";
+.tutoring-offer-info-group-container {
 	.found {
 		margin: 32px 0;
 		display: flex;
@@ -12,6 +13,7 @@
 			flex-flow: row wrap;
 			justify-content: center;
 
+
 			// border: 1px solid green;
 
 			h1 {
@@ -23,18 +25,23 @@
 			display: flex;
 			flex-flow: row wrap;
 			// border: 1px solid blue;
-			justify-content: center;
+			justify-content: flex-start;
+
+			& > div{
+				height: fit-content;
+			}
 		}
 
-		app-tutoring-offer-info {
+		.tutoring-offer-info-component {
 			margin: 16px;
-			box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.15);
+			box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.06);
+			;
 		}
 	}
 }
 
 @media only screen and (min-width: 1024px) {
-	.container {
+	.tutoring-offer-info-group-container {
 		.found {
 			padding: 16px;
 

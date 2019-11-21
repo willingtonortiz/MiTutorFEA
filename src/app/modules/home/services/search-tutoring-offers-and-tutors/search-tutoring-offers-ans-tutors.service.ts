@@ -67,7 +67,7 @@ export class SearchTutoringOffersAnsTutorsService {
 			const tutoringOffers: Array<
 				TutoringOfferInfo
 			> = await this.tutoringOfferService.findByUniversityIdAndCourseId(
-				3,
+				1,
 				course.id
 			);
 

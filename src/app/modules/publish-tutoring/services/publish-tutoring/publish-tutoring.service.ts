@@ -47,7 +47,6 @@ export class PublishTutoringService {
 	public publishTutoring():Promise<any>  {
 
 		let tutoringOffer = this.tutoringOfferSubject.value;
-		console.log(tutoringOffer);
 		return this.http.post(`${environment.apiUrl}/tutoringoffers`,tutoringOffer).toPromise<any>();
 	}
 

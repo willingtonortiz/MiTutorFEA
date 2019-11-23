@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PublishRoutingModule } from './publish-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Pages
 import { PublishOfferComponent } from './pages/index';
@@ -22,7 +22,7 @@ import { PublishTutoringService} from './services/index';
 		PublishRoutingModule,
 		FormsModule,
 		CommonModule,
-
+		ReactiveFormsModule,
 	],
 	declarations: [
 

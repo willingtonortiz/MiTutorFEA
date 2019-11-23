@@ -14,6 +14,9 @@ export class TutoringSessionComponent implements OnInit {
 
 	public tutoringSession: TutoringSessionResponse;
 	public tutor: string;
+	public date: string;
+	public startTime: string;
+	public endTime: string;
 
 	constructor(
 		private viewTutoringService: ViewTutoringService,
@@ -32,6 +35,10 @@ export class TutoringSessionComponent implements OnInit {
 		if	(this.tutoringSession.studentCount == null){
 			this.tutoringSession.studentCount = 0;
 		}
+
+		this.date = new Date(this.tutoringSession.startTime).toLocaleDateString();
+		this.startTime = new Date(this.tutoringSession.startTime).toLocaleTimeString();
+		this.endTime =  new Date(this.tutoringSession.endTime).toLocaleTimeString();
 	}
 
 	async reserve(e){

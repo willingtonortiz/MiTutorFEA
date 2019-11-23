@@ -59,6 +59,7 @@ export class ViewTutoringService {
 			"tutoring_session_id": idSession,
 			"student_id": idUser
 		};
+		console.log(CreateTutoringSession);
 		const uri = `${environment.apiUrl}/TutoringSessionStudent`;
 		await this.httpClient
 			.post<any>(uri, CreateTutoringSession).toPromise<any>();

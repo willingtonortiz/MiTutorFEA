@@ -22,7 +22,9 @@ export class TutoringOfferComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private authenticationService:AuthenticationService
-		) {}
+		) {
+			this.tutoringOffer = {};
+		}
 
 	async ngOnInit() {
 		this.tutoringOffer = await this.viewTutoringService.getTutoringOffer(+this.route.snapshot.paramMap.get('id'));

@@ -16,14 +16,16 @@ export class TutoringSessionComponent implements OnInit {
 	public startTime: string;
 	public endTime: string;
 	public qualifications: any;
-	public name:string;
+	public name: string;
 	constructor(
 		private viewTutoringService: ViewTutoringService,
 		private route: ActivatedRoute,
 		private router: Router,
 		private authenticationService: AuthenticationService,
 		private qualificationService: QualificationService
-	) {}
+	) {
+		this.tutoringSession = { topicsName: [] };
+	}
 
 	async ngOnInit() {
 		this.tutoringSession = await this.viewTutoringService.getTutoringSession(
@@ -53,6 +55,8 @@ export class TutoringSessionComponent implements OnInit {
 	}
 
 	async reserve(e) {
+		console.log(this.authenticationService.userValue.id);
+
 		await this.viewTutoringService
 			.reserveTutoringSession(e, this.authenticationService.userValue.id)
 			.then(() => {
@@ -64,7 +68,7 @@ export class TutoringSessionComponent implements OnInit {
 		await this.qualificationService
 			.getQualificationsByTutor(this.tutorId)
 			.then(data => {
-				this.qualifications =  data;
+				this.qualifications = data;
 			});
 	}
 }

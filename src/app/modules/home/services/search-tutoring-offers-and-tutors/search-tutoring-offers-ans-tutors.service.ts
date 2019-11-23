@@ -3,10 +3,13 @@ import { Course, Tutor } from "src/app/shared/models";
 import {
 	CourseService,
 	TutoringOfferService,
-	TutorService
+	TutorService,
+	AuthenticationService,
+	UniversityService
 } from "src/app/core";
 import { TutoringOfferInfo, TutorInfo } from "src/app/shared/dtos/Input";
 import { BehaviorSubject, Observable } from "rxjs";
+import { University } from "src/app/shared/models/University/University";
 
 @Injectable({
 	providedIn: "root"
@@ -21,9 +24,11 @@ export class SearchTutoringOffersAnsTutorsService {
 	private _tutorsObservable: Observable<Array<TutorInfo>>;
 
 	public constructor(
+		private authenticationService: AuthenticationService,
 		private courseService: CourseService,
 		private tutoringOfferService: TutoringOfferService,
-		private tutorService: TutorService
+		private tutorService: TutorService,
+		private universityService: UniversityService
 	) {
 		this._tutoringOffersSubject = new BehaviorSubject<
 			Array<TutoringOfferInfo>
@@ -57,17 +62,20 @@ export class SearchTutoringOffersAnsTutorsService {
 		courseName: string
 	): Promise<void> {
 		try {
+			const userId: number = this.authenticationService.userValue.id;
+			const university: University = await this.universityService.findByUserId(
+				userId
+			);
+
 			// Finding course
 			const course: Course = await this.courseService.findByUniversityIdAndCourseName(
-				1,
+				university.id,
 				courseName.toLowerCase()
 			);
 
 			// Finding tutoring offers
-			const tutoringOffers: Array<
-				TutoringOfferInfo
-			> = await this.tutoringOfferService.findByUniversityIdAndCourseId(
-				1,
+			const tutoringOffers: Array<TutoringOfferInfo> = await this.tutoringOfferService.findByUniversityIdAndCourseId(
+				university.id,
 				course.id
 			);
 
@@ -79,17 +87,20 @@ export class SearchTutoringOffersAnsTutorsService {
 
 	public async findTutorsByCourseName(courseName: string): Promise<void> {
 		try {
+			const userId: number = this.authenticationService.userValue.id;
+			const university: University = await this.universityService.findByUserId(
+				userId
+			);
+
 			// Finding course
 			const course: Course = await this.courseService.findByUniversityIdAndCourseName(
-				1,
+				university.id,
 				courseName.toLowerCase()
 			);
 
 			// Finding tutors
-			const tutors: Array<
-				TutorInfo
-			> = await this.tutorService.findByUniversityIdAndCourseId(
-				1,
+			const tutors: Array<TutorInfo> = await this.tutorService.findByUniversityIdAndCourseId(
+				university.id,
 				course.id
 			);
 

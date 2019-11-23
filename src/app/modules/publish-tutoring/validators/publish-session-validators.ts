@@ -7,7 +7,10 @@ export function dateValidator(
 	let dateString = control.value.split('-');
 	let date: Date = new Date(dateString[0], dateString[1] - 1, dateString[2]);
 
-	if (date < new Date()) {
+	const today = new Date();
+	const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+	if (date < currentDate) {
 		return { invalidDate: { valid: false, value: control.value } };
 	}
 }

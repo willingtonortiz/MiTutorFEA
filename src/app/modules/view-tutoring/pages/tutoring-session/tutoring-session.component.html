@@ -1,78 +1,62 @@
-<div class="container-tutoriaDetail-master">
+<nav class="navbar">
 
-		<div class="container-tutoria-details" style="min-width: 500px;">
-		  	<div class="details" >
-				<h2>Sesion de tutoria</h2>
-
-				<div  style="margin-bottom: 2%; float: left; ">
-
-					<div class="detail">
-						<p class="label-detail">Fecha</p>
-						<p class="text-detail">{{ date}}</p>
-					</div>
-
-					<div class="detail">
-						<p class="label-detail">Inicio</p>
-						<p class="text-detail">{{startTime}}</p>
-					</div>
-
-					<div class="detail">
-						<p class="label-detail">Fin</p>
-						<p class="text-detail">{{endTime}}</p>
-					</div>
-
-					<div class="detail">
-						<p class="label-detail">Ubicacion</p>
-						<p class="text-detail">{{tutoringSession.place}}</p>
-					</div>
-
-					<div class="detail">
-						<p class="label-detail">Descripcion</p>
-						<p class="text-detail">{{tutoringSession.description}}</p>
-					</div>
-				</div>
-
-				<div style="margin-bottom: 2%;  text-align: center; position: relative ">
-					<div class="card-tutor" >
-						<img src="" alt="">
-						<p class="tutor-name">{{tutor}}</p>
-
-						<div class="score-info-tutor">
-							<p class="score">4.6</p>
-							<p>Puntuacion</p>
-						</div>
-						<div class="navigate-profile">
-							<a>Ver perfil</a>
-						</div>
-					</div>
-					<div class="card-infotutoria"  style="margin-top: 5%;">
-						<div class="title">Participantes</div>
-						<div class="score">
-							<p>{{tutoringSession.studentCount}}</p>
-							<p>Asistirán</p>
-						</div>
-					</div>
-					<button (click)="reserve(tutoringSession.id)" > Asistir</button>
-				</div>
+	<div class="logo">
+		<a href="/home">
+			<img width="64" src="../assets/images/LogoSingle.svg" alt="" />
+		</a>
+	</div>
 
 
+	<div class="avatar">
+		<img src="https://semantic-ui.com/images/avatar2/large/matthew.png" width="64" height="64" alt="" />
+		<p>{{name}}</p>
+	</div>
+</nav>
 
-		  	</div>
+<div class="tutoring-session-container">
 
-
-
-			<div class="details" style=" clear: left;">
-				<hr />
-				<div class="detail" style=" overflow-wrap: break-word;">
-						<p class="label-detail" style="margin-bottom: 2%;">Temas</p>
-							<div *ngFor="let topic of tutoringSession.topicsName" style="margin-bottom: 2%;">
-								<p class="text-detail">{{topic}} </p>
-							</div>
-				</div>
-			</div>
-
+	<div class="view-tutoring-session" style="min-width: 500px;">
+		<div class="description-info">
+			<h2>Descripcion</h2>
+			<p>{{tutoringSession.description}}</p>
+			<p>{{tutoringSession.idTutor}}</p>
 		</div>
 
+		<div class="date-info-session">
+			<h2 class="label-detail">Fecha</h2>
+			<p class="text-detail">{{ date}}</p>
+		</div>
 
+		<div class="date-info-session">
+			<h2 class="label-detail">Inicio</h2>
+			<p class="text-detail">{{startTime}}</p>
+		</div>
+
+		<div class="date-info-session">
+			<h2 class="label-detail">Fin</h2>
+			<p class="text-detail">{{endTime}}</p>
+		</div>
+		<div class="topics-info-session" style=" overflow-wrap: break-word;">
+			<h2>Temas</h2>
+			<div *ngFor="let topic of tutoringSession.topicsName" style="margin-bottom: 2%;">
+				<p class="text-detail">{{topic}} </p>
+			</div>
+		</div>
+		<button (click)="reserve(tutoringSession.id)"> Asistir</button>
+	</div>
+	<div class="container-qualificationsTutor">
+		<h2>Comentarios del tutor</h2>
+		<div *ngFor="let qualification of qualifications" class="qualification-comment-container">
+			<div class="avatar-student">
+				<img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1"
+					width="48" height="48" alt="">
+				<p>{{qualification.fullName}}</p>
+
+			</div>
+			<div class="comment">
+				<p>{{qualification.comment}}</p>
+
+			</div>
+		</div>
+	</div>
 </div>
-

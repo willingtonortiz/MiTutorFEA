@@ -8,7 +8,7 @@
 		</div>
 		<div class="avatar">
 			<img src="https://semantic-ui.com/images/avatar2/large/matthew.png" width="64" height="64" alt="" />
-			<button (click)="logout()">Logout</button>
+			<p>{{name}}</p>
 		</div>
 	</nav>
 	<div class="home-sub">
@@ -21,7 +21,17 @@
 			<app-tutor-info-group></app-tutor-info-group>
 		</div>
 
-		<div class="listTutoringAssits">
+		<div class="tutoringSessionsToAssist">
+			<h2>Tutorías por asistir</h2>
+			<div class="list-sessions-active">
+				<div class="card-sessionHome" *ngFor="let session of mySessions" >
+					<p>Fecha: {{ session.startTime | date: "dd/MM/yyyy"  }}</p>
+					<p>Ubicacion: {{session.place}}</p>
+				</div>
+			</div>
+			<div *ngIf="mySessions === undefined">
+				<h2>No tienes tutorías por asistir</h2>
+			</div>
 
 		</div>
 	</div>

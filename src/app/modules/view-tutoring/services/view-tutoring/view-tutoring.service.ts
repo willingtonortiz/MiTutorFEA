@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { TutoringOfferResponse } from "src/app/shared/dtos/Output/TutoringOfferResponse";
 import { environment } from "src/environments/environment";
+import { TutoringSessionUser } from 'src/app/shared/dtos/Output/TutoringSessionUser';
+import { University } from 'src/app/shared/models/University/University';
 
 @Injectable({
 	providedIn: "root"
@@ -32,6 +34,7 @@ export class ViewTutoringService {
 	async getTutoringSession(tutoringId: number, sessionId: number) {
 		await this.checkData(tutoringId);
 
+
 		for (
 			let i = 0;
 			i < this.tutoringOffer.tutoringSessionResponses.length;
@@ -44,9 +47,11 @@ export class ViewTutoringService {
 			}
 		}
 	}
+
+
 	async getTutor(tutoringId: number) {
 		await this.checkData(tutoringId);
-		return this.tutoringOffer.tutor;
+		return this.tutoringOffer.idTutor;
 	}
 
 	async reserveTutoringSession(idSession, idUser) {
@@ -58,4 +63,13 @@ export class ViewTutoringService {
 		await this.httpClient
 			.post<any>(uri, CreateTutoringSession).toPromise<any>();
 	}
+
+	public  getAllTutoringSessionByUser(id:number): Promise<Array<TutoringSessionUser>> {
+		const url = `${environment.apiUrl}/TutoringSessionStudent/user/${id}`
+		return this.httpClient.
+				get<Array<TutoringSessionUser>>(url)
+				.toPromise<Array<TutoringSessionUser>>();
+	}
+
+
 }

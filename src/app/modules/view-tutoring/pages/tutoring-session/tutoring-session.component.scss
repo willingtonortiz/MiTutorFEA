@@ -1,121 +1,104 @@
-.container-tutoriaDetail-master {
-	background: var(--main-background);
-	margin-top: 2%;
+@import "../../../../../styles.scss";
 
-  }
-  .container-tutoria-details {
-	text-align: left;
-	width: 80%;
-	margin: 0 auto;
-	justify-content: space-between;
-	margin-top: 1em;
-  }
-  .container-tutoria-details .details h2 {
-	font-size: 2.5em;
-	margin-bottom: 1em;
-  }
-  .container-tutoria-details .details .detail {
+.tutoring-session-container {
+	display: flex;
+	padding: 3em;
+}
+.container-qualificationsTutor {
+	width: 20%;
+}
+.container-qualificationsTutor h2 {
+	color: $yellow;
+}
+.view-tutoring-session {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.view-tutoring-session > div {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: column;
 	margin: 1em 0;
-  }
-  .container-tutoria-details .details .detail .label-detail {
-	font-size: 22px;
-	color: var(--primary-text);
-	opacity: 0.67;
-  }
-  .container-tutoria-details .details .detail .text-detail {
-	font-size: 22px;
-	font-weight: 600;
-	color: var(--primary-text);
-  }
-  .container-tutoria-details .details .detail .university-detail {
-	font-size: 22px;
-	font-weight: 600;
-	color: var(--primary-text);
+}
+.view-tutoring-session button {
+	color: $white;
+	background: $primary-color;
 	text-align: center;
-  }
-
-  .viewBtn {
-	color: #ffffff;
-	background: linear-gradient(45deg, #4959ec, #52a4ec);
-    border: none;
-    padding: 5px 9px;
-    border-radius: 50%;
-    cursor: pointer;
-    float: right;
-  }
-
-  .btn {
-
-	width: 75px;
-	border-radius: 5px;
-	border: none;
+	padding: 12px 0;
+	width: 200px;
+	border-radius: 4px;
 	font-weight: 600;
-	font-size: 15px;
-	color: #ffffff;
-	background: linear-gradient(45deg, #4959ec, #52a4ec);
-	padding: 0.74em 0;
+	border: none;
 	cursor: pointer;
+	font-size: 1.25em;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 32px;
+
+	& .avatar {
+	  display: flex;
+	  align-items: center;
+	  & img {
+		border-radius: 50%;
+		margin-right: 12px;
+	  }
+	}
+
+	& input {
+	  padding: 12px 18px;
+	  font-size: 18px;
+	  color: var(--primary-text);
+	  opacity: 0.87;
+	  border: 1px solid #afafaf;
+	  border-radius: 6px;
+	  width: 100%;
+	  transition: all 0.2s ease-in-out;
+	}
   }
 
-  .session{
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-	hyphens: auto;
-  }
 
 
-.container-tutoria-details .info .card-tutor, .container-tutoria-details .info .card-infotutoria{
-    display: flex;
-    flex-direction: column;
-    background:var(--white);
-    border-radius: 6px;
-    padding: 2em 3em;
-    margin-bottom: 2em;
+  .qualification-comment-container{
+	width: 400px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+	padding: 16px 12px;
+	border-radius: 4px;
+	margin: 1em 0;
+	box-shadow: 0 0 24px rgba(0,0,0,.098);
+}
+.qualification-comment-container .avatar-student{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.qualification-comment-container .avatar-student img{
+	margin-right: 1em;
+}
+.qualification-comment-container .avatar-student p{
+	font-size: 24px;
+	font-weight: 600;
+}
+.qualification-comment-container .comment{
+	margin-top: .2em;
+	font-size: 18px;
+	opacity: .67;
+	text-align: left;
+	margin-left: 68px;
 }
 
-.container-tutoria-details .info .card-tutor .tutor-name,.card-infotutoria .title{
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--primary-text);
-    margin: .75em 0;
-    //text-align: center;
+.container-qualificationsTutor {
+	width: 20%;
 }
-
-.container-tutoria-details .info .card-tutor > div,.card-infotutoria .score{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.container-qualificationsTutor h2 {
+	color: $yellow;
 }
-
-.container-tutoria-details .score-info-tutor .score, .card-infotutoria .score p:first-child{
-    font-size: 32px;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-.container-tutoria-details .score-info-tutor p:last-child{
-    color: var(--primary-text);
-    opacity: .67;
-}
-
-.container-tutoria-details .card-tutor .navigate-profile {
-    margin-top: 2em;
-}
-.container-tutoria-details .card-tutor .navigate-profile a{
-    background: var(--primary-color);
-    padding: .75em 3em;
-    color: var(--white);
-    font-size: 20px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    opacity: .87;
-    transition: all .2s ease-out;
-}
-.container-tutoria-details .card-tutor .navigate-profile a:hover{
-    opacity: 1;
-}
-
-
-
-

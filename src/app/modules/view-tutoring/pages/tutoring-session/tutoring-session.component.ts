@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewTutoringService } from '../../services';
 import { TutoringSessionResponse } from 'src/app/shared/dtos/Output/TutoringSessionResponse';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthenticationService } from 'src/app/core';
 
 @Component({
   selector: 'app-tutoring-session',
@@ -17,7 +18,8 @@ export class TutoringSessionComponent implements OnInit {
 	constructor(
 		private viewTutoringService: ViewTutoringService,
 		private route: ActivatedRoute,
-		private router: Router
+		private router: Router,
+		private authenticationService: AuthenticationService
 		) { }
 
 	async ngOnInit() {
@@ -30,6 +32,12 @@ export class TutoringSessionComponent implements OnInit {
 		if	(this.tutoringSession.studentCount == null){
 			this.tutoringSession.studentCount = 0;
 		}
+	}
+
+	async reserve(e){
+		await this.viewTutoringService.reserveTutoringSession(e,this.authenticationService.userValue.id).then( ()=>{
+			console.log("se realizo con exito")
+		});
 	}
 
 }

@@ -21,8 +21,7 @@
 				<div class="field">
 					<label>Contraseña</label>
 					<input type="password" placeholder="Ingrese su contraseña" formControlName="password" />
-					<span class="error" *ngIf="password.hasError('required') && password.dirty">Ingrese el nombre de
-						usuario</span>
+					<span class="error" *ngIf="password.hasError('required') && password.dirty">Ingrese su contraseña</span>
 				</div>
 
 				<span class="error">{{ errorMessage }}</span>

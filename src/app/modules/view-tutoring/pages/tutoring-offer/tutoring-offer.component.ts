@@ -12,9 +12,10 @@ import { Time } from '@angular/common';
 export class TutoringOfferComponent implements OnInit {
 
 	public tutoringOffer: TutoringOfferResponse;
-	public date: Date;
-	public startTime: Time;
-	public endTime: Time;
+	public date: string;
+	public startTime: string;
+	public endTime: string;
+
 	constructor(
 		private viewTutoringService: ViewTutoringService,
 		private route: ActivatedRoute,
@@ -23,11 +24,10 @@ export class TutoringOfferComponent implements OnInit {
 
 	async ngOnInit() {
 		this.tutoringOffer = await this.viewTutoringService.getTutoringOffer(+this.route.snapshot.paramMap.get('id'));
-<<<<<<< HEAD
 
-=======
-		console.log(this.tutoringOffer)
->>>>>>> 6eacd9b12adc65f2c273f4d6ad0e8b0bb801ea42
+		this.date = new Date(this.tutoringOffer.startTime).toLocaleDateString();
+		this.startTime = new Date(this.tutoringOffer.startTime).toLocaleTimeString();
+		this.endTime =  new Date(this.tutoringOffer.endTime).toLocaleTimeString();
 	}
 
 	viewSession(index) {

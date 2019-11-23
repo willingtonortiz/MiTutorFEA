@@ -20,14 +20,20 @@
 			<h2>{{tutoringOffer.course}}</h2>
 
 			<div class="div1" style="margin-bottom: 2%;">
+
+				<div class="detail">
+					<p class="label-detail">Fecha</p>
+					<p class="text-detail">{{ date}}</p>
+				</div>
+
 				<div class="detail">
 					<p class="label-detail">Inicio</p>
-					<p class="text-detail">{{tutoringOffer.startTime |  date:'medium'}}</p>
+					<p class="text-detail">{{ startTime}}</p>
 				</div>
 
 				<div class="detail">
 					<p class="label-detail">Fin</p>
-					<p class="text-detail">{{tutoringOffer.endTime  | date:'medium'}}</p>
+					<p class="text-detail">{{endTime }}</p>
 				</div>
 
 				<div class="detail">

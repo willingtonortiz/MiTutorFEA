@@ -3,6 +3,7 @@ import { UniversityService } from "src/app/core";
 import { University } from "src/app/shared/models/University/University";
 import { UserRegister } from "src/app/shared/dtos/Input/UserRegister";
 import { RegisterService } from "../../services/register.service";
+import { Router } from '@angular/router';
 
 @Component({
 	selector: "app-register",
@@ -21,7 +22,8 @@ export class RegisterComponent implements OnInit {
 	public career: string;
 	constructor(
 		private _universityService: UniversityService,
-		private _registerService: RegisterService
+		private _registerService: RegisterService,
+		private _route:Router
 	) {}
 
 	async ngOnInit() {
@@ -50,6 +52,8 @@ export class RegisterComponent implements OnInit {
 		// 	this.username,
 		// 	(this.career = "");
 
-		this._registerService.Create(userRegister);
+		this._registerService.Create(userRegister).then ( ()=>{
+			this._route.navigateByUrl('/login');
+		});
 	}
 }

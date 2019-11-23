@@ -1,14 +1,27 @@
-.container {
+@import "../../../../../styles.scss";
+
+.tutoring-offer-info-container {
 	width: 300px;
 	padding: 16px 20px;
 	border-radius: 5px;
+	color: #000;
+	background: #fff;
 	cursor: pointer;
+	transition: all .3s ease-in-out;
+	margin: 16px;
+	box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.06);
+
+	&:hover{
+		background: rgb(79, 132, 238);
+		color: #fff;
+		box-shadow: 0 0 24px rgba(79,132,238,.5) !important;
+	}
 
 	.tutoring-body {
 		margin-bottom: 16px;
 
 		display: flex;
-		flex-flow: row nowrap;
+		flex-flow: row wrap;
 		justify-content: flex-start;
 		align-items: center;
 
@@ -30,10 +43,16 @@
 			display: flex;
 			flex-flow: column nowrap;
 
+
 			h1 {
 				font-weight: bold;
 				font-size: 18px;
 				margin-bottom: 4px;
+				text-align: left;
+				color: inherit;
+			}
+			p{
+				font-size: 18px;
 			}
 		}
 	}

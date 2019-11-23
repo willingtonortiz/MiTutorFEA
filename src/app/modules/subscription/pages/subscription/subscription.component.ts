@@ -24,7 +24,9 @@ export class SubscriptionComponent implements OnInit {
 		this.currentUser = this._authenticationService.userValue;
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+
+	}
 
 	public async Subscription(): Promise<any> {
 		let newMembership: MembershipDTO = {

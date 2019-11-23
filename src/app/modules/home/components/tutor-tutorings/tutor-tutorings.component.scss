@@ -1,100 +1,128 @@
-.container {
+.tutor-tutorings-component {
 	height: 100%;
 	padding: 16px;
 
 	.tutoring-offers {
-		height: 525px;
+	  height: 525px;
+	  display: flex;
+	  flex-flow: column nowrap;
+
+	  .new-tutoring{
+		  display: flex;
+		  justify-content: flex-start;
+		  margin-bottom: .5em;
+
+	  }
+	  button {
+		padding: 12px 20px;
+		background-color: #4e83ed;
+		color: white;
+		border-radius: 5px;
+		border: none;
+		font-size: 18px;
+		font-weight: normal;
+		cursor: pointer;
+		margin-top: 2em;
+
+
+	  }
+
+	  h1 {
+		text-align: center;
+		font-size: 24px;
+		color: #4e8efc;
+	  }
+	  .title {
+		display: flex;
+		align-items: center;
+		& img {
+		  margin-right: 1em;
+		}
+	  }
+
+	  .list {
+		flex: 1;
+		margin: 8px 0;
+		overflow-y: auto;
+
 		display: flex;
 		flex-flow: column nowrap;
 
-		h1 {
-			text-align: center;
-			font-size: 24px;
-			color: #4e8efc;
-		}
+		.tutoring-offer {
+		  margin: 4px 0;
+		  align-items: center;
+		  cursor: pointer;
 
-		.list {
-			flex: 1;
-			margin: 8px 0;
-			overflow-y: auto;
+		  display: flex;
+		  flex-flow: row nowrap;
+
+		  .box {
+			width: 60px;
+			height: 60px;
+			margin-right: 16px;
+			font-size: 28px;
+			border-radius: 5px;
 
 			display: flex;
-			flex-flow: column nowrap;
+			justify-content: center;
+			align-items: center;
+		  }
 
-			.tutoring-offer {
-				margin: 4px 0;
-				align-items: center;
-				cursor: pointer;
-
-				display: flex;
-				flex-flow: row nowrap;
-
-				.box {
-					width: 60px;
-					height: 60px;
-					margin-right: 16px;
-					font-size: 28px;
-					border-radius: 5px;
-
-					display: flex;
-					justify-content: center;
-					align-items: center;
-				}
-
-				.name {
-					font-size: 18px;
-				}
-			}
+		  .name {
+			font-size: 18px;
+		  }
 		}
+	  }
 	}
 
 	.no-tutorings {
-		height: 100%;
+	  height: 100%;
 
+	  display: flex;
+	  flex-flow: column nowrap;
+
+	  .information {
 		display: flex;
 		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
 
-		.information {
-			display: flex;
-			flex-flow: column nowrap;
-			justify-content: center;
-			align-items: center;
+		flex: 1;
 
-			flex: 1;
-
-			h1 {
-				color: #4e8efc;
-				font-size: 24px;
-				font-weight: bold;
-			}
-
-			p {
-				font-size: 18px;
-			}
+		h1 {
+		  color: #4e8efc;
+		  font-size: 24px;
+		  font-weight: bold;
 		}
 
-		.new-tutoring {
-			flex: 1;
-
-			display: flex;
-			justify-content: center;
-			align-items: center;
-
-			a {
-				background-color: #4e8efc;
-				color: white;
-				font-size: 24px;
-				padding: 8px 20px;
-				border: none;
-				border-radius: 5px;
-				cursor: pointer;
-				transition: all ease-in 0.25s;
-				text-decoration: none;
-
-				&:hover {
-					transform: scale(1.05);
-				}
-			}
+		p {
+		  font-size: 18px;
 		}
+	  }
+
+	  .new-tutoring {
+		flex: 1;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		a {
+		  background-color: #4e8efc;
+		  color: white;
+		  font-size: 24px;
+		  padding: 8px 20px;
+		  border: none;
+		  border-radius: 5px;
+		  cursor: pointer;
+		  transition: all ease-in 0.25s;
+		  text-decoration: none;
+		  margin: 1em 0;
+
+		  &:hover {
+			transform: scale(1.05);
+		  }
+		}
+	  }
 	}
-}
+  }

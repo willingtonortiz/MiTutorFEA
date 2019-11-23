@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { TutoringOfferInfo } from "src/app/shared/dtos/Input";
+import { Router } from '@angular/router';
 
 @Component({
 	selector: "app-tutoring-offer-info",
@@ -9,7 +10,14 @@ import { TutoringOfferInfo } from "src/app/shared/dtos/Input";
 export class TutoringOfferInfoComponent implements OnInit {
 	@Input("tutoringOffer") tutoringOffer: TutoringOfferInfo;
 
-	constructor() {}
+	constructor(
+		private router:Router
+	) {}
 
 	ngOnInit() {}
+
+	NavigateToDetails(e){
+
+		this.router.navigate(['view-tutoring/'+e]);
+	}
 }

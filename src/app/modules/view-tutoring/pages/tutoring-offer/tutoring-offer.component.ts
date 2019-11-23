@@ -19,6 +19,7 @@ export class TutoringOfferComponent implements OnInit {
 
 	async ngOnInit() {
 		this.tutoringOffer = await this.viewTutoringService.getTutoringOffer(+this.route.snapshot.paramMap.get('id'));
+		console.log(this.tutoringOffer)
 	}
 
 	viewSession(index) {

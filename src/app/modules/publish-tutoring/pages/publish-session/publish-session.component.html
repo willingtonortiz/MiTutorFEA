@@ -2,60 +2,67 @@
 		<div class="form-container">
 		  <h2>Nueva sesion</h2>
 
-		  <div *ngIf="errors.length">
-				<b>Por favor corrija los siguientes errores:</b>
-				<ul style="margin-left:5%">
-					  <li *ngFor="let error of errors">
-					  {{ error }}
-					</li>
-				</ul>
-		  </div>
 
 
-		<form (ngSubmit)="createSession()">
+		<form  [formGroup]="sessionForm"  (ngSubmit)="createSession()">
 
 			<div class="field">
 			  <label for>Ubicacion</label>
-			  <input required [(ngModel)]="tutoringSession.place" name="place" type="text" placeholder="Ingrese la ubicacion" />
+			  <input formControlName="place" name="place" type="text" placeholder="Ingrese la ubicacion" />
+			  <span *ngIf=" (place.dirty || place.touched) && place.hasError('required') && !place.valid">Es requerida una capacidad</span>
 			</div>
 
 			<div class="field">
-			  <label for>Fecha y hora de inicio</label>
-			  <input required [(ngModel)]="tutoringSession.startTime" name="start-time" type="datetime-local" placeholder="Ingrese la fecha de inicio" />
+				<label for>Fecha</label>
+				<input formControlName="sessionDate" name="date" type="date" placeholder="Ingrese la fecha" />
+				<span *ngIf=" (sessionDate.dirty || sessionDate.touched) && sessionDate.hasError('required') && !sessionDate.valid">Es requerida una fecha </span>
+				<span *ngIf=" (sessionDate.dirty || sessionDate.touched) && sessionDate.hasError('invalidDate') && !sessionDate.valid">Ingrese una fecha valida </span>
+			</div>
+
+			<div class="field">
+			  <label for>Hora de inicio</label>
+			  <input  formControlName="startTime" (focusout)="checkTimes()" name="start-time" type="time" placeholder="Ingrese la hora de inicio" />
+			  <span *ngIf=" (startTime.dirty || startTime.touched) && startTime.hasError('required') && !startTime.valid">Es requerida una hora de inicio</span>
+			  <span *ngIf="timeError">La hora de inicio no concuerda con la hora de fin </span>
 			</div>
 
 			<div class="field">
 			  <label for>Fecha y hora de fin</label>
-			  <input required [(ngModel)]="tutoringSession.endTime" name="end-time" type="datetime-local" placeholder="Ingrese la fecha de fin" />
+			  <input  formControlName="endTime"  (focusout)="checkTimes()" name="end-time" type="time" placeholder="Ingrese la hora de fin" />
+			  <span *ngIf=" (endTime.dirty || endTime.touched) && endTime.hasError('required') && !endTime.valid">Es requerida una hora de capacidad</span>
+			  <span *ngIf="timeError">La hora de inicio no concuerda con la hora de fin </span>
 			</div>
 
 			<div class="field">
 			  <label for>Precio</label>
-			  <input required [(ngModel)]="tutoringSession.price" name="price" type="number" placeholder="Ingrese el precio" />
+			  <input formControlName="price" name="price" type="number" placeholder="Ingrese el precio" />
+			  <span *ngIf=" (price.dirty || price.touched) && price.hasError('required') && !price.valid">Es requerido un precio</span>
 			</div>
 
 			<div class="field">
 			  <label for>Descripción</label>
-			  <textarea required [(ngModel)]="tutoringSession.description" cols="30" rows="10" name="description"></textarea>
+			  <textarea  formControlName="description" cols="30" rows="10" name="description"></textarea>
+			  <span *ngIf=" (description.dirty || description.touched) && description.hasError('required') && !description.valid">Es requerida una descripcion</span>
 			</div>
+
 
 			<div class="field">
 					<label>Seleccione un tema</label>
-					<select [(ngModel)]="selectedTopic" (change)="selectTopic()" name="topicSelection">
+					<select formControlName="topic" (change)="selectTopic()" name="topicSelection">
 						<option [value]="0"> Elija un tema</option>
 						<option *ngFor="let topic of avaliableTopics" [ngValue]=topic >{{topic.name}}</option>
 					</select>
 			</div>
 
-			<div  *ngFor="let topic of selectedTopics" style="margin-bottom: 2%;">
+			<div  *ngFor="let topic of selectedTopics" class="topics">
 					<p>
 						{{topic.name}}
-						<button (click)="deleteTopic(topic.id)" class="del">x</button>
+						<button (click)="deleteTopic(topic.id)" class="del">Eliminar</button>
 					</p>
 			</div>
 
 			<div style="margin-bottom: 5%;">
-				<button type="submit" class="btn" > Crear Session</button>
+				<button type="submit" class="btn" style="width: 100%;" > Crear Session</button>
 			</div>
 
 		</form>
@@ -66,7 +73,7 @@
 				<div *ngFor="let sessions of sessionsCreated; let i = index" style="margin-top: 5%; margin-bottom: 5%;">
 					<p>
 						Session N° {{i}}
-						<button (click)="deleteSession(i)" class="del">x</button>
+						<button (click)="deleteSession(i)" class="del">Eliminar </button>
 					</p>
 				</div>
 			<hr />
@@ -74,20 +81,8 @@
 
 
 		<div style="margin-bottom: 5%;">
-				<button (click)="publishTutoring()"  class="btn" > Publicar tutoria </button>
+				<button (click)="publishTutoring()"  class="btn" style="width: 100%;"> Publicar tutoria </button>
 		</div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 		</div>

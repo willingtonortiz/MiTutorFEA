@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TutoringOfferResponse } from 'src/app/shared/dtos/Output/TutoringOfferResponse';
 import { ViewTutoringService } from '../../services';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-tutoring-offer',
@@ -11,6 +12,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class TutoringOfferComponent implements OnInit {
 
 	public tutoringOffer: TutoringOfferResponse;
+	public date: Date;
+	public startTime: Time;
+	public endTime: Time;
 	constructor(
 		private viewTutoringService: ViewTutoringService,
 		private route: ActivatedRoute,
@@ -19,6 +23,7 @@ export class TutoringOfferComponent implements OnInit {
 
 	async ngOnInit() {
 		this.tutoringOffer = await this.viewTutoringService.getTutoringOffer(+this.route.snapshot.paramMap.get('id'));
+
 	}
 
 	viewSession(index) {

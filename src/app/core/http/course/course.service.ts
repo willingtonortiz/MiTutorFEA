@@ -63,6 +63,7 @@ export class CourseService {
 
 
 	public findTopics(courseId: number): Promise<Array<Course>> {
+
 		return this.httpClient
 		.get<Array<Topic>>(
 			`${environment.apiUrl}/courses/${courseId}/topics`

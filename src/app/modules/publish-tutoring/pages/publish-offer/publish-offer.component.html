@@ -2,36 +2,32 @@
     <div class="form-container">
 	  <h2>Nueva oferta</h2>
 
-	  <div *ngIf="errors.length">
-		<b>Por favor corrija los siguientes errores:</b>
-
-		<ul style="margin-left:5%">
-		  	<li *ngFor="let error of errors">
-			  {{ error }}
-			</li>
-		</ul>
-
-	  </div>
 
 
-      <form (ngSubmit)="crearOferta()">
+      <form [formGroup]="offerForm" (ngSubmit)="createOffer()">
 
 		<div class="field">
 			<label>Seleccione un curso</label>
-			<select (change)="selectCourse($event.target.value)">
+			<select formControlName="course" (change)="selectCourse($event.target.value)">
 				<option [value]="0"> Elija un curso</option>
 				<option *ngFor="let course of avaliableCourses" [value]="course.id" >{{course.name}}</option>
 			</select>
+			<span *ngIf=" (course.dirty || course.touched) && ((course.hasError('required') && !course.valid) || course.hasError('invalidNumber')) ">
+				Es requerido un curso
+			  </span>
 		</div>
 
 		<div class="field">
 			<label >Participantes máximos en cada sesión</label>
-			<input required [(ngModel)]="tutoringOffer.capacity" name="capacity" type="number" placeholder="Ingrese la capacidad maxima" />
+			<input  formControlName="capacity" name="capacity" type="number" placeholder="Ingrese la capacidad maxima" />
+			<span *ngIf=" (capacity.dirty || capacity.touched) && capacity.hasError('required') && !capacity.valid">Es requerido una capacidad</span>
+			<span *ngIf=" (capacity.dirty || capacity.touched) && capacity.hasError('invalidNumber')">La capacidad maxima es de 5</span>
 		</div>
 
 		<div class="field">
 			<label >Descripcion de la oferta</label>
-			<textarea required [(ngModel)]="tutoringOffer.description" name="description"  cols="30" rows="10"></textarea>
+			<textarea formControlName="description"  name="description"  cols="30" rows="10"></textarea>
+			<span *ngIf=" (description.dirty || description.touched) && description.hasError('required') && !description.valid"> Es requerida una descripcion</span>
 		</div>
 
 		<button type="submit" class="btn">Crear oferta</button>
